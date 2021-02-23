@@ -17,14 +17,14 @@ namespace SisFiespApplication.Models
 
 		[Display(Name = "Login")]
 		[Column("Login")]
-		public int Login { get; set; }
+		public string Login { get; set; }
 
 		[Display(Name = "Senha")]
 		[Column("Senha")]
-		public int Senha { get; set; }
+		public string Senha { get; set; }
 
 		[Display(Name = "Email")]
 		[Column("Email")]
-		public int Email { get; set; }
+		public string Email { get; set; }
 	}
 }
