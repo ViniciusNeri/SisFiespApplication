@@ -15,6 +15,10 @@ namespace SisFiespApplication.Models
 		[Column("Codigo")]
 		public int Codigo { get; set; }
 
+		[Display(Name = "Nome")]
+		[Column("Nome")]
+		public string Nome { get; set; }
+
 		[Display(Name = "Login")]
 		[Column("Login")]
 		public string Login { get; set; }
@@ -26,5 +30,17 @@ namespace SisFiespApplication.Models
 		[Display(Name = "Email")]
 		[Column("Email")]
 		public string Email { get; set; }
+
+		[Display(Name = "Status")]
+		[Column("Status")]
+		public int? Status { get; set; }
+
+		[Display(Name = "Função")]
+		[Column("Funcao")]
+		public int? Funcao { get; set; }
+
+		[Display(Name = "Data Cadastro")]
+		[Column("DtCadastro")]
+		public DateTime? DtCadastro { get; set; }
 	}
 }
