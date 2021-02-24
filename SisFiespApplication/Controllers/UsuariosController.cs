@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -58,10 +59,13 @@ namespace SisFiespApplication.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Codigo,Login,Senha,Email")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Codigo,Nome,Login,Senha,Email,Funcao")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
+                
+                usuario.DtCadastro = DateTime.Today.ToString("d");
+                usuario.Status = 1;
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

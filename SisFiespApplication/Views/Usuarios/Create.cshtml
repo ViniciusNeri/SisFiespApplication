@@ -5,40 +5,112 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>Usuario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
-                <span asp-validation-for="Login" class="text-danger"></span>
+
+<div class="page-wrapper">
+    <!-- Page-header start -->
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icofont icofont-student-alt bg-c-blue"></i>
+                    <div class="d-inline">
+                        <h4>Usuários</h4>
+                        <span>Incluir Usuário</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Usuários</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Incluir Usuários</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+    <!-- Page-header end -->
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-right">
+                            <i class="icofont icofont-spinner-alt-5"></i>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                <h2 class="sub-title">Nome:</h2>
+                                <input asp-for="Nome" class="form-control" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                <h2 class="sub-title">Login:</h2>
+                                <input asp-for="Login" class="form-control" />
+                                <span asp-validation-for="Login" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-8 col-xl-4 m-b-30">
+                                <h2 class="sub-title">Senha:</h2>
+                                <input asp-for="Senha" class="form-control" type="password" />
+                                <span asp-validation-for="Senha" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                <h2 class="sub-title">Email:</h2>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-12 col-xl-3 m-b-30">
+                                <h2 class="sub-title">Função:</h2>
+                                <select asp-for="Funcao" class="form-control form-control-default">
+                                    <option value="1">Especialista</option>
+                                    <option value="2">Professor(a)</option>
+                                    <option value="3">Diretor(a)</option>
+                                </select>
+                            </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+                            <div class="form-group">
+                                <input style="float:right;margin-right:10px" type="button" value="Cancelar" onclick="location.href='@Url.Action("Index", "Usuarios")'" class="btn btn-danger" />
+                                <input style="float:right;margin-right:10px" type="submit" value="Salvar" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Page-body end -->
+    @*<h1>Create</h1>
+
+        <h4>Usuario</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>*@
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
