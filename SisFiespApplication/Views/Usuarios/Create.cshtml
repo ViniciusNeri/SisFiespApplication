@@ -7,110 +7,182 @@
 
 
 
-<div class="page-wrapper">
-    <!-- Page-header start -->
-    <div class="page-header card">
-        <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <i class="icofont icofont-student-alt bg-c-blue"></i>
-                    <div class="d-inline">
-                        <h4>Usuários</h4>
-                        <span>Incluir Usuário</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="page-header-breadcrumb">
-                    <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">
-                                <i class="icofont icofont-home"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#!">Usuários</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#!">Incluir Usuários</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page-header end -->
-    <!-- Page-body start -->
-    <div class="page-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <!-- Zero config.table start -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-right">
-                            <i class="icofont icofont-spinner-alt-5"></i>
+    <div class="page-wrapper">
+        <!-- Page-header start -->
+        <div class="page-header card">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="icofont icofont-student-alt bg-c-blue"></i>
+                        <div class="d-inline">
+                            <h4>Usuários</h4>
+                            <span>Incluir Usuário</span>
                         </div>
                     </div>
-                    <div class="card-block">
-                        <form asp-action="Create">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
-                                <h2 class="sub-title">Nome:</h2>
-                                <input asp-for="Nome" class="form-control" />
-                                <span asp-validation-for="Nome" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
-                                <h2 class="sub-title">Login:</h2>
-                                <input asp-for="Login" class="form-control" />
-                                <span asp-validation-for="Login" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-sm-8 col-xl-4 m-b-30">
-                                <h2 class="sub-title">Senha:</h2>
-                                <input asp-for="Senha" class="form-control" type="password" />
-                                <span asp-validation-for="Senha" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-sm-8 col-xl-8 m-b-30">
-                                <h2 class="sub-title">Email:</h2>
-                                <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                            <div class="col-sm-12 col-xl-3 m-b-30">
-                                <h2 class="sub-title">Função:</h2>
-                                <select asp-for="Funcao" class="form-control form-control-default">
-                                    <option value="1">Especialista</option>
-                                    <option value="2">Professor(a)</option>
-                                    <option value="3">Diretor(a)</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group">
-                                <input style="float:right;margin-right:10px" type="button" value="Cancelar" onclick="location.href='@Url.Action("Index", "Usuarios")'" class="btn btn-danger" />
-                                <input style="float:right;margin-right:10px" type="submit" value="Salvar" class="btn btn-primary" />
-                            </div>
-                        </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="icofont icofont-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Usuários</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Incluir Usuários</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-    <!-- Page-body end -->
-    @*<h1>Create</h1>
+        <!-- Page-header end -->
+        <!-- Page-body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Zero config.table start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-right">
+                                <i class="icofont icofont-spinner-alt-5"></i>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <h4>Usuario</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-4">
+                                <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                    <h2 class="sub-title">Nome:</h2>
+                                    <input id="nomeUsuario" class="form-control" />
 
+                                </div>
+                                <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                    <h2 class="sub-title">Login:</h2>
+                                    <input id="loginUsuario" class="form-control" />
+
+                                </div>
+                                <div class="form-group col-sm-8 col-xl-4 m-b-30">
+                                    <h2 class="sub-title">Senha:</h2>
+                                    <input id="senhaUsuario" class="form-control" type="password" /> <input id="confirmarsenhaUsuario" class="form-control" type="password" />
+
+                                </div>
+                                <div class="form-group col-sm-8 col-xl-8 m-b-30">
+                                    <h2 class="sub-title">Email:</h2>
+                                    <input id="emailUsuario" class="form-control" />
+
+                                </div>
+                                <div class="col-sm-12 col-xl-3 m-b-30">
+                                    <h2 class="sub-title">Função:</h2>
+                                    <select id="funcaoUsuario" class="form-control form-control-default">
+                                        <option value="1">Especialista</option>
+                                        <option value="2">Professor(a)</option>
+                                        <option value="3">Diretor(a)</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input style="float:right;margin-right:10px" type="button" id="btCancelarUsuario" value="Cancelar" onclick="location.href='@Url.Action("Index", "Usuarios")'" class="btn btn-danger" />
+                                    <input style="float:right;margin-right:10px" type="button" onclick="salvarUsuario()" value="Salvar" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>*@
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+
+        <script>
+
+            function salvarUsuario() {                               
+
+                var dados = "";
+                if ($('#nomeUsuario').val() != "") {
+                    dados += '{name:"Nome", value:"' + $('#nomeUsuario').val() + '"},';
+                } else {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Nome do Usuário está vazio!",
+                        icon: "error",
+                    });                    
+                    return;
+                }
+                if ($('#loginUsuario').val() != "") {
+                    dados += '{name:"Login", value:"' + $('#loginUsuario').val() + '"},';
+                } else {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Login do usuário está vazio!",
+                        icon: "error",
+                    });
+                    return;
+                }
+                if ($('#senhaUsuario').val() != "") {
+                    dados += '{name:"Senha", value:"' + $('#senhaUsuario').val() + '"},';
+                } else {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Senha do usuário está vazio!",
+                        icon: "error",
+                    });
+                    return;
+                }
+                if ($('#emailUsuario').val() != "") {
+                    dados += '{name:"Email", value:"' + $('#emailUsuario').val() + '"},';
+                } else {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Email do usuário está vazio!",
+                        icon: "error",
+                    });
+                    return;
+                }
+                if ($('#funcaoUsuario').val() != "") {
+                    dados += '{name:"Funcao", value:"' + $('#funcaoUsuario').val() + '"},';
+                } else {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Função do usuário está vazio!",
+                        icon: "error",
+                    });
+                    return;                    
+                }
+
+                dadosEnvio = eval("[" + dados + "]");
+
+
+                $.ajax({
+                    url: "/Usuarios/Create",
+                    method: "POST",
+                    data: dadosEnvio,
+                    success: function (data) {
+                        swal({
+                            title: "Sucesso!",
+                            text: "Usuário cadastrado com Sucesso",
+                            icon: "success",
+                        });
+
+                        $("#pagina").html(data)
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        swal({
+                            title: "Erro ao cadastrar!",
+                            text: "Erro desconhecido!",
+                            icon: "error",
+                        });
+                    }
+                });
+            }
+
+        </script>

@@ -58,8 +58,7 @@ namespace SisFiespApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Codigo,Nome,Login,Senha,Email,Funcao")] Usuario usuario)
+        public async Task<IActionResult> Create(Usuario usuario)
         {
             if (ModelState.IsValid)
             {

@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
+<div id="pagina">   
 
 <head>
 
@@ -426,19 +429,19 @@
 
                             </div>
                             @*<div class="pcoded-search">
-                                <span class="searchbar-toggle">  </span>
-                                <div class="pcoded-search-box ">
-                                    <input type="text" placeholder="Pesquisar">
-                                    <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
-                                </div>
-                            </div>*@
+                                    <span class="searchbar-toggle">  </span>
+                                    <div class="pcoded-search-box ">
+                                        <input type="text" placeholder="Pesquisar">
+                                        <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>*@
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">    <a href="index.html">        <span class="pcoded-micon"><i class="ti-home"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Dashboard</span>        <span class="pcoded-mcaret"></span>    </a></li>
                                 <li class="">    <a href="escola.html">        <span class="pcoded-micon"><i class="icofont icofont-hat"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Escolas</span>        <span class="pcoded-mcaret"></span>    </a></li>
                                 <li class="">    <a href="aluno.html">        <span class="pcoded-micon"><i class="icofont icofont-group-students"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Alunos</span>        <span class="pcoded-mcaret"></span>    </a></li>
                                 <li class="">    <a href="avaliacao.html">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Avaliações</span>        <span class="pcoded-mcaret"></span>    </a></li>
-                                <li class="">    <a asp-area="" asp-controller="Usuarios" asp-action="Index">        <span class="pcoded-micon"><i class="icofont icofont-student-alt"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Usuários</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                <li class="">    <a asp-area="" asp-controller="Usuarios" asp-action="Index" id="menuUsuario">        <span class="pcoded-micon"><i class="icofont icofont-student-alt"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Usuários</span>        <span class="pcoded-mcaret"></span>    </a></li>
 
                             </ul>
 
@@ -495,7 +498,7 @@
     <script type="text/javascript" src="~/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="~/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
     <!-- Custom js -->
-    <script type="text/javascript" src="~/assets/pages/dashboard/project-dashboard.js"></script>
+    @*<script type="text/javascript" src="~/assets/pages/dashboard/project-dashboard.js"></script>*@
     <script src="~/assets/pages/data-table/js/data-table-custom.js"></script>
 
     <!-- data-table js -->
@@ -516,9 +519,10 @@
     <script src="~/assets/js/demo-12.js"></script>
     <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="~/assets/js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
-
+</div>
 </html>
