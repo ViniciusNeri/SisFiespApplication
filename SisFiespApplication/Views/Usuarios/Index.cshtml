@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-wrapper">
+<div class="page-wrapper" id="pagina">
     <!-- Page-header start -->
     <div class="page-header card">
         <div class="row align-items-end">
@@ -69,7 +69,19 @@
                                                 @Html.DisplayFor(modelItem => item.Login)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Funcao)
+                                                @{ if (item.Funcao == 1)
+                                                    {
+                                                        @Html.Raw("Especialista");
+                                                    }
+                                                    else if (item.Funcao == 2)
+                                                    {
+                                                        @Html.Raw("Professor(a)");
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("Diretor(a)");
+                                                    }
+                                                }
                                             </td>
                                             <td>
                                                 @{ if (item.Status == 1)
@@ -96,4 +108,4 @@
     </div>
     <!-- Page-body end -->
 </div>
-@await Html.PartialAsync("modal_incluir.cshtml");
+
