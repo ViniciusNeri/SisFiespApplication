@@ -61,7 +61,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr role="row" class="odd">
-                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Usuário"> <i class="icofont icofont-ui-edit"></i></button>                    <button asp-route-id="@item.Codigo" style="float:none" class="btn-danger btn-circle bt_acao" type="button" title="Excluir Usuário"><i class="icofont icofont-ui-close"></i></button></td>
+                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Usuário" onclick="location.href='@Url.Action("Edit", "Usuarios",new { id = @item.Codigo})'"> <i class="icofont icofont-ui-edit"></i></button>                    <button onclick="deletarUsuario(@item.Codigo)" style="float:none" class="btn-danger btn-circle bt_acao" type="button" title="Excluir Usuário"><i class="icofont icofont-ui-close"></i></button></td>
                                             <td class="sorting_1">
                                                 @Html.DisplayFor(modelItem => item.Nome)
                                             </td>
@@ -102,10 +102,11 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <!-- Page-body end -->
 </div>
+
 

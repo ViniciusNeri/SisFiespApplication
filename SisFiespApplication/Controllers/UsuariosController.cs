@@ -92,13 +92,8 @@ namespace SisFiespApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Codigo,Login,Senha,Email")] Usuario usuario)
-        {
-            if (id != usuario.Codigo)
-            {
-                return NotFound();
-            }
+        public async Task<IActionResult> Edit(Usuario usuario)
+        {           
 
             if (ModelState.IsValid)
             {
@@ -124,26 +119,25 @@ namespace SisFiespApplication.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var usuario = await _context.Usuario
-                .FirstOrDefaultAsync(m => m.Codigo == id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
+        //    var usuario = await _context.Usuario
+        //        .FirstOrDefaultAsync(m => m.Codigo == id);
+        //    if (usuario == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(usuario);
-        }
+        //    return View(usuario);
+        //}
 
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usuario = await _context.Usuario.FindAsync(id);
