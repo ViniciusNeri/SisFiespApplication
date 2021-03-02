@@ -53,9 +53,6 @@ function deletarUsuario(idUsuario) {
 		});	
 }
 
-
-
-
 function salvarUsuario() {
 
 	var dados = "";

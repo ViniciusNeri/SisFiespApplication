@@ -29,6 +29,15 @@ namespace SisFiespApplication
 			options.UseMySQL(stringConexao));
 
 			services.AddControllersWithViews();
+
+			services.AddDistributedMemoryCache();
+
+			services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+				options.Cookie.HttpOnly = true;
+				options.Cookie.IsEssential = true;
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +51,9 @@ namespace SisFiespApplication
 			{
 				app.UseExceptionHandler("/Home/Error");
 			}
+
+			app.UseSession();
+
 			app.UseStaticFiles();
 
 			app.UseRouting();

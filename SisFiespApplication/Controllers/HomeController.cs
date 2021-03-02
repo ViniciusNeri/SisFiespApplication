@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SisFiespApplication.Models;
@@ -20,7 +21,15 @@ namespace SisFiespApplication.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			if (HttpContext.Session.GetString("userName") != null)
+			{
+				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
+				return View();
+			}
+			else
+			{
+				return Json(new { status = "error", message = "error creating customer" });
+			}
 		}
 
 		public IActionResult Privacy()

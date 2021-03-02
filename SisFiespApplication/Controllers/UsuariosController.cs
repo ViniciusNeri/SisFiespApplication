@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,15 @@ namespace SisFiespApplication.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuario.ToListAsync());
+			if (HttpContext.Session.GetString("userName") != null)
+			{
+                ViewData["Usuario"] = HttpContext.Session.GetString("nome");
+                return View(await _context.Usuario.ToListAsync());
+			}
+			else
+			{
+                return RedirectToAction("Index", "Login");
+			}
         }
 
         // GET: Usuarios/Details/5
@@ -99,6 +108,9 @@ namespace SisFiespApplication.Controllers
             {
                 try
                 {
+
+                    usuario.DtCadastro = DateTime.Today.ToString("d");
+                    usuario.Status = 1;
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
@@ -117,24 +129,6 @@ namespace SisFiespApplication.Controllers
             }
             return View(usuario);
         }
-
-        // GET: Usuarios/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var usuario = await _context.Usuario
-        //        .FirstOrDefaultAsync(m => m.Codigo == id);
-        //    if (usuario == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(usuario);
-        //}
 
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]

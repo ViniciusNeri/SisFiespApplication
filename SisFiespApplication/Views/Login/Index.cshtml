@@ -61,7 +61,7 @@
                     <div class="col-sm-12">
                         <!-- Authentication card start -->
                         <div class="login-card card-block auth-body mr-auto ml-auto">
-                            <form class="md-float-material">
+                            <form class="md-float-material" action="@Url.Action("Login")" method="post">
                                 <div class="text-center">
                                     <img src="../assets/images/auth/SisFiesp4.png" alt="logo.png">
                                 </div>
@@ -73,13 +73,18 @@
                                     </div>
                                     <hr />
                                     <div class="input-group">
-                                        <input type="email" class="form-control" placeholder="Login">
+                                        <input type="text" class="form-control" name="userName" placeholder="Login">
                                         <span class="md-line"></span>
                                     </div>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" placeholder="Senha">
+                                        <input type="password" class="form-control" name="password" placeholder="Senha">
                                         <span class="md-line"></span>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="text-inverse text-left"><b><font color="red">@ViewBag.error</font></b></p>
+                                        </div>
+                                    </div>                                   
                                     <div class="row m-t-25 text-left">
                                         <div class="col-12">
                                             <div class="checkbox-fade fade-in-primary d-">
@@ -96,7 +101,7 @@
                                     </div>
                                     <div class="row m-t-30">
                                         <div class="col-md-12">
-                                            <button type="button" onclick="document.location='index.html'" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Entrar</button>
+                                            <button type="submit" name="btnLogin" value="login" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Entrar</button>
                                         </div>
                                     </div>
                                     <hr />
