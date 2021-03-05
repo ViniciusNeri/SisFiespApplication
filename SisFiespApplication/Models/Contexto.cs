@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SisFiespApplication.Models;
 
 namespace SisFiespApplication.Models
 {
@@ -14,6 +15,8 @@ namespace SisFiespApplication.Models
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<SisFiespApplication.Models.Escola> Escola { get; set; }
 
     }
 }

@@ -1,0 +1,171 @@
+﻿@model SisFiespApplication.Models.Escola
+
+@{
+    ViewData["Title"] = "Editar Escola";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <input type="hidden" id="idEscola" value="@Model.Codigo">
+
+<div class="page-wrapper" id="pagina">
+    <!-- Page-header start -->
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icofont icofont-hat bg-c-pink"></i>
+                    <div class="d-inline">
+                        <h4>Escolas</h4>
+                        <span>Editar Escola</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Escolas</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Editar Escola</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Zero config.table start -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-right">
+                            <i class="icofont icofont-spinner-alt-5"></i>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-sm-1 mobile-inputs">
+                                    <h1 class="sub-title">Nº UE:</h1>
+                                    <input id="NUEEscola" class="form-control" value="@Model.NUE" />
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <h1 class="sub-title">Nome:</h1>
+                                    <input id="nomeEscola" class="form-control" value="@Model.Nome"/>
+                                </div>
+                                <div class="col-sm-4 mobile-inputs ">
+                                    <h1 class="sub-title">Email:</h1>
+                                    <input id="emailEscola" class="form-control" value="@Model.Email"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 ">
+                                    <h1 class="sub-title">Telefone:</h1>
+                                    <input id="telefoneEscola" class="form-control" type="text" value="@Model.Telefone"/>
+                                </div>
+                                <div class="col-sm-3 ">
+                                    <h1 class="sub-title">Telefone 2:</h1>
+                                    <input id="telefone2Escola" class="form-control" type="text" value="@Model.Telefone2"/>
+                                </div>
+                                <div class="col-sm-4 ">
+                                    <h1 class="sub-title">Bairro:</h1>
+                                    <input id="bairroEscola" class="form-control" type="text" value="@Model.Bairro"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">Cidade:</h1>
+                                    <input id="cidadeEscola" class="form-control" type="text" value="@Model.Cidade"/>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <h1 class="sub-title">Endereço:</h1>
+                                    <input id="enderecoEscola" class="form-control" type="text" value="@Model.Endereco"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4 ">
+                                    <h1 class="sub-title">Caracterização Socioeconômica:</h1>
+                                    <input id="caractSocioEcon" class="form-control" type="text" value="@Model.CaractSocioEcon"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">Recursos de saúde da região:</h1>
+                                    <input id="RecursoRegiao" class="form-control" type="text" value="@Model.RecursoRegiao"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">Estrutura e organização:</h1>
+                                    <input id="estruturaOrganizacao" class="form-control" type="text" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">Diretor(a):</h1>
+                                    <select id="diretorEscola" class="form-control form-control-primary">
+                                        <option value=" ">  </option>
+                                        @if (ViewData["Usuarios"] as IEnumerable<Usuario> != null)
+                                        {
+                                            foreach (var diretor in ViewData["Usuarios"] as IEnumerable<Usuario>)
+                                            {
+                                                if (diretor.Codigo == Model.UsuarioCodigo){<option selected="selected" value="@diretor.Codigo">@diretor.Nome</option>}
+                                                else {<option value="@diretor.Codigo">@diretor.Nome</option>}
+                                                
+                                            }
+                                        }
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">CP1:</h1>
+                                    <input id="cP1" class="form-control" type="text" value="@Model.CP1"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1 class="sub-title">CP2:</h1>
+                                    <input id="cP2" class="form-control" type="text" value="@Model.CP2"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input style="float:right;margin-right:10px" type="button" id="btCancelarEscola" value="Cancelar" onclick="location.href='@Url.Action("Index", "Escolas")'" class="btn btn-danger" />
+                                <input style="float:right;margin-right:10px" type="button" onclick="salvarEscolaEdit()" value="Salvar" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,5 +42,8 @@ namespace SisFiespApplication.Models
 		[Display(Name = "Data Cadastro")]
 		[Column("DtCadastro")]
 		public string DtCadastro { get; set; }
+
+		public ICollection<Escola> Escolas { get; set; }
+
 	}
 }
