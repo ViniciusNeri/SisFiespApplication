@@ -18,5 +18,11 @@ namespace SisFiespApplication.Models
 
         public DbSet<SisFiespApplication.Models.Escola> Escola { get; set; }
 
+        public DbSet<SisFiespApplication.Models.Aluno> Aluno { get; set; }
+
+        public DbSet<SisFiespApplication.Models.Diagnostico> Diagnostico { get; set; }
+
+        public DbSet<SisFiespApplication.Models.Modalidade> Modalidade { get; set; }
+
     }
 }

@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\aluno.js" />
     <Content Remove="wwwroot\js\escola.js" />
     <Content Remove="wwwroot\js\usuario.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\aluno.js" />
     <None Include="wwwroot\js\escola.js" />
     <None Include="wwwroot\js\usuario.js" />
   </ItemGroup>

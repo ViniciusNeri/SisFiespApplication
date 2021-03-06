@@ -79,5 +79,7 @@ namespace SisFiespApplication.Models
 		[NotMapped]
 		public String UsuarioNome { get; set; }
 
+		public ICollection<Aluno> Alunos { get; set; }
+
 	}
 }

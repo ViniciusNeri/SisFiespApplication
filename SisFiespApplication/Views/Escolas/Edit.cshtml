@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <input type="hidden" id="idEscola" value="@Model.Codigo">
+<input type="hidden" id="idEscola" value="@Model.Codigo">
 
 <div class="page-wrapper" id="pagina">
     <!-- Page-header start -->
@@ -61,11 +61,11 @@
                                 </div>
                                 <div class="col-sm-6 ">
                                     <h1 class="sub-title">Nome:</h1>
-                                    <input id="nomeEscola" class="form-control" value="@Model.Nome"/>
+                                    <input id="nomeEscola" class="form-control" value="@Model.Nome" />
                                 </div>
                                 <div class="col-sm-4 mobile-inputs ">
                                     <h1 class="sub-title">Email:</h1>
-                                    <input id="emailEscola" class="form-control" value="@Model.Email"/>
+                                    <input id="emailEscola" class="form-control" value="@Model.Email" />
                                 </div>
                             </div>
                             <div class="row">
@@ -76,15 +76,15 @@
                             <div class="row">
                                 <div class="col-sm-3 ">
                                     <h1 class="sub-title">Telefone:</h1>
-                                    <input id="telefoneEscola" class="form-control" type="text" value="@Model.Telefone"/>
+                                    <input id="telefoneEscola" class="form-control" type="text" value="@Model.Telefone" />
                                 </div>
                                 <div class="col-sm-3 ">
                                     <h1 class="sub-title">Telefone 2:</h1>
-                                    <input id="telefone2Escola" class="form-control" type="text" value="@Model.Telefone2"/>
+                                    <input id="telefone2Escola" class="form-control" type="text" value="@Model.Telefone2" />
                                 </div>
                                 <div class="col-sm-4 ">
                                     <h1 class="sub-title">Bairro:</h1>
-                                    <input id="bairroEscola" class="form-control" type="text" value="@Model.Bairro"/>
+                                    <input id="bairroEscola" class="form-control" type="text" value="@Model.Bairro" />
                                 </div>
                             </div>
                             <div class="row">
@@ -95,11 +95,11 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h1 class="sub-title">Cidade:</h1>
-                                    <input id="cidadeEscola" class="form-control" type="text" value="@Model.Cidade"/>
+                                    <input id="cidadeEscola" class="form-control" type="text" value="@Model.Cidade" />
                                 </div>
                                 <div class="col-sm-6 ">
                                     <h1 class="sub-title">Endereço:</h1>
-                                    <input id="enderecoEscola" class="form-control" type="text" value="@Model.Endereco"/>
+                                    <input id="enderecoEscola" class="form-control" type="text" value="@Model.Endereco" />
                                 </div>
                             </div>
                             <div class="row">
@@ -110,11 +110,11 @@
                             <div class="row">
                                 <div class="col-sm-4 ">
                                     <h1 class="sub-title">Caracterização Socioeconômica:</h1>
-                                    <input id="caractSocioEcon" class="form-control" type="text" value="@Model.CaractSocioEcon"/>
+                                    <input id="caractSocioEcon" class="form-control" type="text" value="@Model.CaractSocioEcon" />
                                 </div>
                                 <div class="col-sm-4">
                                     <h1 class="sub-title">Recursos de saúde da região:</h1>
-                                    <input id="RecursoRegiao" class="form-control" type="text" value="@Model.RecursoRegiao"/>
+                                    <input id="RecursoRegiao" class="form-control" type="text" value="@Model.RecursoRegiao" />
                                 </div>
                                 <div class="col-sm-4">
                                     <h1 class="sub-title">Estrutura e organização:</h1>
@@ -135,9 +135,15 @@
                                         {
                                             foreach (var diretor in ViewData["Usuarios"] as IEnumerable<Usuario>)
                                             {
-                                                if (diretor.Codigo == Model.UsuarioCodigo){<option selected="selected" value="@diretor.Codigo">@diretor.Nome</option>}
-                                                else {<option value="@diretor.Codigo">@diretor.Nome</option>}
-                                                
+                                                if (diretor.Codigo == Model.UsuarioCodigo)
+                                                {
+                                                    <option selected="selected" value="@diretor.Codigo">@diretor.Nome</option>
+}
+                                                else
+                                                {
+                                                    <option value="@diretor.Codigo">@diretor.Nome</option>
+}
+
                                             }
                                         }
 
@@ -145,11 +151,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <h1 class="sub-title">CP1:</h1>
-                                    <input id="cP1" class="form-control" type="text" value="@Model.CP1"/>
+                                    <input id="cP1" class="form-control" type="text" value="@Model.CP1" />
                                 </div>
                                 <div class="col-sm-4">
                                     <h1 class="sub-title">CP2:</h1>
-                                    <input id="cP2" class="form-control" type="text" value="@Model.CP2"/>
+                                    <input id="cP2" class="form-control" type="text" value="@Model.CP2" />
                                 </div>
                             </div>
                             <div class="row">
