@@ -10,22 +10,22 @@ using SisFiespApplication.Models;
 
 namespace SisFiespApplication.Controllers
 {
-	public class DiagnosticosController : Controller
+	public class ModalidadesController : Controller
 	{
 		private readonly Contexto _context;
 
-		public DiagnosticosController(Contexto context)
+		public ModalidadesController(Contexto context)
 		{
 			_context = context;
 		}
 
-		// GET: Diagnosticos
+		// GET: Modalidades
 		public async Task<IActionResult> Index()
 		{
 			if (HttpContext.Session.GetString("userName") != null)
 			{
 				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-				return View(await _context.Diagnostico.ToListAsync());
+				return View(await _context.Modalidade.ToListAsync());
 			}
 			else
 			{
@@ -33,7 +33,7 @@ namespace SisFiespApplication.Controllers
 			}
 		}
 
-		// GET: Diagnosticos/Details/5
+		// GET: Modalidades/Details/5
 		public async Task<IActionResult> Details(int? id)
 		{
 			if (id == null)
@@ -41,17 +41,17 @@ namespace SisFiespApplication.Controllers
 				return NotFound();
 			}
 
-			var diagnostico = await _context.Diagnostico
+			var modalidade = await _context.Modalidade
 				.FirstOrDefaultAsync(m => m.Codigo == id);
-			if (diagnostico == null)
+			if (modalidade == null)
 			{
 				return NotFound();
 			}
 
-			return View(diagnostico);
+			return View(modalidade);
 		}
 
-		// GET: Diagnosticos/Create
+		// GET: Modalidades/Create
 		public IActionResult Create()
 		{
 			if (HttpContext.Session.GetString("userName") != null)
@@ -65,32 +65,33 @@ namespace SisFiespApplication.Controllers
 			}
 		}
 
-		// POST: Diagnosticos/Create
+		// POST: Modalidades/Create
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
 		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		public async Task<IActionResult> Create(Diagnostico diagnostico)
+		public async Task<IActionResult> Create(Modalidade modalidade)
 		{
 			if (ModelState.IsValid)
 			{
-				_context.Add(diagnostico);
+				_context.Add(modalidade);
 				await _context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));
 			}
-			return View(diagnostico);
+			return View(modalidade);
 		}
 
-		// GET: Diagnosticos/Edit/5
+		// GET: Modalidades/Edit/5
 		public async Task<IActionResult> Edit(int? id)
 		{
+
 			if (id != null && HttpContext.Session.GetString("userName") != null)
 			{
-				var diagnostico = await _context.Diagnostico.FindAsync(id);
-				if (diagnostico == null)
+				var modalidade = await _context.Modalidade.FindAsync(id);
+				if (modalidade == null)
 				{
 					return NotFound();
 				}
-				return View(diagnostico);
+				return View(modalidade);
 			}
 			else
 			{
@@ -98,23 +99,23 @@ namespace SisFiespApplication.Controllers
 			}
 		}
 
-		// POST: Diagnosticos/Edit/5
+		// POST: Modalidades/Edit/5
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
 		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		public async Task<IActionResult> Edit(Diagnostico diagnostico)
+		public async Task<IActionResult> Edit(Modalidade modalidade)
 		{
 
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					_context.Update(diagnostico);
+					_context.Update(modalidade);
 					await _context.SaveChangesAsync();
 				}
 				catch (DbUpdateConcurrencyException)
 				{
-					if (!DiagnosticoExists(diagnostico.Codigo))
+					if (!ModalidadeExists(modalidade.Codigo))
 					{
 						return NotFound();
 					}
@@ -125,10 +126,10 @@ namespace SisFiespApplication.Controllers
 				}
 				return RedirectToAction(nameof(Index));
 			}
-			return View(diagnostico);
+			return View(modalidade);
 		}
 
-		// GET: Diagnosticos/Delete/5
+		// GET: Modalidades/Delete/5
 		public async Task<IActionResult> Delete(int? id)
 		{
 			if (id == null)
@@ -136,29 +137,29 @@ namespace SisFiespApplication.Controllers
 				return NotFound();
 			}
 
-			var diagnostico = await _context.Diagnostico
+			var modalidade = await _context.Modalidade
 				.FirstOrDefaultAsync(m => m.Codigo == id);
-			if (diagnostico == null)
+			if (modalidade == null)
 			{
 				return NotFound();
 			}
 
-			return View(diagnostico);
+			return View(modalidade);
 		}
 
-		// POST: Diagnosticos/Delete/5
+		// POST: Modalidades/Delete/5
 		[HttpPost, ActionName("Delete")]
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
-			var diagnostico = await _context.Diagnostico.FindAsync(id);
-			_context.Diagnostico.Remove(diagnostico);
+			var modalidade = await _context.Modalidade.FindAsync(id);
+			_context.Modalidade.Remove(modalidade);
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
 		}
 
-		private bool DiagnosticoExists(int id)
+		private bool ModalidadeExists(int id)
 		{
-			return _context.Diagnostico.Any(e => e.Codigo == id);
+			return _context.Modalidade.Any(e => e.Codigo == id);
 		}
 	}
 }
