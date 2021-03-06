@@ -138,7 +138,7 @@ function salvarUsuario() {
 		success: function (data) {
 			swal({
 				title: "Sucesso!",
-				text: "Usuário cadastrado com Sucesso",
+				text: "Usuário cadastrado com Sucesso.",
 				icon: "success",
 			});
 
@@ -289,7 +289,7 @@ function salvarUsuarioEdit() {
 		success: function (data) {
 			swal({
 				title: "Sucesso!",
-				text: "Usuário editado com Sucesso",
+				text: "Usuário editado com Sucesso.",
 				icon: "success",
 			});
 

@@ -126,7 +126,7 @@ function salvarEscola() {
 		success: function (data) {
 			swal({
 				title: "Sucesso!",
-				text: "Escola cadastrado com Sucesso",
+				text: "Escola cadastrada com Sucesso.",
 				icon: "success",
 			});
 
@@ -230,7 +230,7 @@ function salvarEscolaEdit() {
 		success: function (data) {
 			swal({
 				title: "Sucesso!",
-				text: "Escola editado com Sucesso",
+				text: "Escola editada com Sucesso.",
 				icon: "success",
 			});
 

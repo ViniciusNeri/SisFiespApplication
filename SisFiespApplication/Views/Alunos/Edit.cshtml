@@ -16,7 +16,7 @@
                 <div class="page-header-title">
                     <i class="icofont icofont-group-students bg-c-green"></i>
                     <div class="d-inline">
-                        <h4>Escolas</h4>
+                        <h4>Alunos</h4>
                         <span>Editar Aluno</span>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                     <h1 class="sub-title">Nome:</h1>
                                     <input id="nomeAluno" class="form-control" value="@Model.Nome" />
                                 </div>
-                                <div class="col-sm-4 mobile-inputs ">
+                                <div class="col-sm-2 mobile-inputs ">
                                     <h1 class="sub-title">Turno:</h1>
                                     <select id="TurnoAluno" class="form-control form-control-primary">
                                         @if (Model.Turno == 1)
@@ -90,6 +90,27 @@
                                         else
                                         {
                                             <option value="3">Noite</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 mobile-inputs ">
+                                    <h1 class="sub-title">Turno:</h1>
+                                    <select id="StatusAluno" class="form-control form-control-primary">
+                                        @if (Model.Status == 1)
+                                        {
+                                            <option selected="selected" value="1">Ativo</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="1">Ativo</option>
+                                        }
+                                        @if (Model.Status == 0)
+                                        {
+                                            <option selected="selected" value="0">Inativo</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0">Inativo</option>
                                         }
                                     </select>
                                 </div>
@@ -122,7 +143,7 @@
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Escola:</h1>
                                     <select id="codigoEscola" class="form-control form-control-primary">
-                                        <option value=" ">  </option>
+                                        <option value="">  </option>
                                         @if (ViewData["Escolas"] as IEnumerable<Escola> != null)
                                         {
                                             foreach (var escola in ViewData["Escolas"] as IEnumerable<Escola>)
@@ -143,7 +164,7 @@
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Modalidade/Fase:</h1>
                                     <select id="modalidadeAluno" class="form-control form-control-primary">
-                                        <option value=" ">  </option>
+                                        <option value="">  </option>
                                         @if (ViewData["Modalidades"] as IEnumerable<Modalidade> != null)
                                         {
                                             foreach (var modalidade in ViewData["Modalidades"] as IEnumerable<Modalidade>)
@@ -164,7 +185,7 @@
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Diagnostico:</h1>
                                     <select id="diagnosticoAluno" class="form-control form-control-primary">
-                                        <option value=" ">  </option>
+                                        <option value="">  </option>
                                         @if (ViewData["Diagnosticos"] as IEnumerable<Diagnostico> != null)
                                         {
                                             foreach (var diagnostico in ViewData["Diagnosticos"] as IEnumerable<Diagnostico>)

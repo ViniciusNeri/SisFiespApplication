@@ -3,7 +3,7 @@ function deletarAluno(idAluno) {
 
 	swal({
 		title: "Excluir Aluno",
-		text: "Confirma a exclusão da escola?",
+		text: "Confirma a exclusão do aluno?",
 		icon: "warning",
 		buttons: true,
 		dangerMode: true,
@@ -180,6 +180,9 @@ function salvarAlunoEdit() {
 	if ($('#TurnoAluno').val() != "") {
 		dados += '{name:"Turno", value:"' + $('#TurnoAluno').val() + '"},';
 	}
+	if ($('#StatusAluno').val() != "") {
+		dados += '{name:"Status", value:"' + $('#StatusAluno').val() + '"},';
+	}
 	if ($('#NomeMae').val() != "") {
 		dados += '{name:"NomeMae", value:"' + $('#NomeMae').val() + '"},';
 	}
@@ -201,14 +204,10 @@ function salvarAlunoEdit() {
 		dados += '{name:"Observacao", value:"' + $('#observacaoAluno').val() + '"},';
 	}
 	if ($('#idAluno').val() != "") {
-		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'  ; 
+		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'; 
 	}
 	dadosEnvio = eval("[" + dados + "]");
-
-	/*
-	 * teste
-	 * */
-
+	
 	$.ajax({
 		url: "/Alunos/Edit",
 		method: "POST",

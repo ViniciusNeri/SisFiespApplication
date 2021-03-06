@@ -10,48 +10,22 @@ using SisFiespApplication.Models;
 
 namespace SisFiespApplication.Controllers
 {
-	public class AlunosController : Controller
+	public class DiagnosticosController : Controller
 	{
 		private readonly Contexto _context;
 
-		public AlunosController(Contexto context)
+		public DiagnosticosController(Contexto context)
 		{
 			_context = context;
 		}
 
-		// GET: Alunos
+		// GET: Diagnosticos
 		public async Task<IActionResult> Index()
 		{
-			if (HttpContext.Session.GetString("userName") != null)
-			{
-
-				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-
-				return View(await (from e in _context.Aluno
-								   join u in _context.Escola
-								   on e.EscolaCodigo
-								   equals u.Codigo							
-								   join m in _context.Modalidade
-								   on e.ModalidadeCodigo
-								   equals m.Codigo into m1
-								   from r in m1.DefaultIfEmpty()
-								   select new Aluno
-								   {
-									   Codigo = e.Codigo,
-									   Nome = e.Nome,
-									   EscolaNome = u.Nome,
-									   Turno = e.Turno,
-									   DtNascimento = e.DtNascimento,
-									   ModalidadeNome = r.Nome
-								   }).ToListAsync());
-			}
-			else
-			{
-				return Json(new { status = "error", message = "error creating customer" });
-			}
+			return View(await _context.Diagnostico.ToListAsync());
 		}
 
-		// GET: Alunos/Details/5
+		// GET: Diagnosticos/Details/5
 		public async Task<IActionResult> Details(int? id)
 		{
 			if (id == null)
@@ -59,25 +33,22 @@ namespace SisFiespApplication.Controllers
 				return NotFound();
 			}
 
-			var aluno = await _context.Aluno
+			var diagnostico = await _context.Diagnostico
 				.FirstOrDefaultAsync(m => m.Codigo == id);
-			if (aluno == null)
+			if (diagnostico == null)
 			{
 				return NotFound();
 			}
 
-			return View(aluno);
+			return View(diagnostico);
 		}
 
-		// GET: Alunos/Create
+		// GET: Diagnosticos/Create
 		public IActionResult Create()
 		{
 			if (HttpContext.Session.GetString("userName") != null)
 			{
 				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-				ViewData["Escolas"] = _context.Escola.ToList();
-				ViewData["Modalidades"] = _context.Modalidade.ToList();
-				ViewData["Diagnosticos"] = _context.Diagnostico.ToList();
 				return View();
 			}
 			else
@@ -86,64 +57,56 @@ namespace SisFiespApplication.Controllers
 			}
 		}
 
-		// POST: Alunos/Create
+		// POST: Diagnosticos/Create
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
 		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		public async Task<IActionResult> Create(Aluno aluno)
+		public async Task<IActionResult> Create(Diagnostico diagnostico)
 		{
 			if (ModelState.IsValid)
 			{
-				aluno.Status = 1;
-				_context.Add(aluno);
+				_context.Add(diagnostico);
 				await _context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));
 			}
-			return View(aluno);
+			return View(diagnostico);
 		}
 
-		// GET: Alunos/Edit/5
+		// GET: Diagnosticos/Edit/5
 		public async Task<IActionResult> Edit(int? id)
 		{
 			if (id != null && HttpContext.Session.GetString("userName") != null)
 			{
-				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-				ViewData["Escolas"] = _context.Escola.ToList();
-				ViewData["Modalidades"] = _context.Modalidade.ToList();
-				ViewData["Diagnosticos"] = _context.Diagnostico.ToList();
-
-				var aluno = await _context.Aluno.FindAsync(id);
-
-				if (aluno == null)
+				var diagnostico = await _context.Diagnostico.FindAsync(id);
+				if (diagnostico == null)
 				{
 					return NotFound();
 				}
-				return View(aluno);
+				return View(diagnostico);
 			}
 			else
 			{
 				return NotFound();
 			}
-
 		}
 
-		// POST: Alunos/Edit/5
+		// POST: Diagnosticos/Edit/5
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for 
 		// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-
-		public async Task<IActionResult> Edit(Aluno aluno)
+		public async Task<IActionResult> Edit(Diagnostico diagnostico)
 		{
+
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					_context.Update(aluno);
+					_context.Update(diagnostico);
 					await _context.SaveChangesAsync();
 				}
 				catch (DbUpdateConcurrencyException)
 				{
-					if (!AlunoExists(aluno.Codigo))
+					if (!DiagnosticoExists(diagnostico.Codigo))
 					{
 						return NotFound();
 					}
@@ -154,10 +117,10 @@ namespace SisFiespApplication.Controllers
 				}
 				return RedirectToAction(nameof(Index));
 			}
-			return View(aluno);
+			return View(diagnostico);
 		}
 
-		// GET: Alunos/Delete/5
+		// GET: Diagnosticos/Delete/5
 		public async Task<IActionResult> Delete(int? id)
 		{
 			if (id == null)
@@ -165,29 +128,29 @@ namespace SisFiespApplication.Controllers
 				return NotFound();
 			}
 
-			var aluno = await _context.Aluno
+			var diagnostico = await _context.Diagnostico
 				.FirstOrDefaultAsync(m => m.Codigo == id);
-			if (aluno == null)
+			if (diagnostico == null)
 			{
 				return NotFound();
 			}
 
-			return View(aluno);
+			return View(diagnostico);
 		}
 
-		// POST: Alunos/Delete/5
+		// POST: Diagnosticos/Delete/5
 		[HttpPost, ActionName("Delete")]
 		public async Task<IActionResult> DeleteConfirmed(int id)
 		{
-			var aluno = await _context.Aluno.FindAsync(id);
-			_context.Aluno.Remove(aluno);
+			var diagnostico = await _context.Diagnostico.FindAsync(id);
+			_context.Diagnostico.Remove(diagnostico);
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
 		}
 
-		private bool AlunoExists(int id)
+		private bool DiagnosticoExists(int id)
 		{
-			return _context.Aluno.Any(e => e.Codigo == id);
+			return _context.Diagnostico.Any(e => e.Codigo == id);
 		}
 	}
 }

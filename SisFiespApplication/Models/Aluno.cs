@@ -35,6 +35,10 @@ namespace SisFiespApplication.Models
 		[Column("Mapeado")]
 		public int Mapeado { get; set; }
 
+		[Display(Name = "Status")]
+		[Column("Status")]
+		public int Status { get; set; }
+
 		[Display(Name = "Nome Mae")]
 		[Column("NomeMae")]
 		public string NomeMae { get; set; }
@@ -47,7 +51,7 @@ namespace SisFiespApplication.Models
 		[ForeignKey("FK_aluno_modalidade")]
 		[Display(Name = "Modalidade")]
 		[Column("ModalidadeCodigo")]
-		public int ModalidadeCodigo { get; set; }
+		public int? ModalidadeCodigo { get; set; }
 
 		[NotMapped]
 		public string ModalidadeNome { get; set; }
@@ -55,7 +59,7 @@ namespace SisFiespApplication.Models
 		[ForeignKey("FK_aluno_diagnostico")]
 		[Display(Name = "Diagnostico")]
 		[Column("DiagnosticoCodigo")]
-		public int DiagnosticoCodigo { get; set; }
+		public int? DiagnosticoCodigo { get; set; }
 
 		[NotMapped]
 		public string DiagnosticoNome { get; set; }

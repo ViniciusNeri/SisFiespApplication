@@ -12,7 +12,7 @@
                 <div class="page-header-title">
                     <i class="icofont icofont-group-students bg-c-green"></i>
                     <div class="d-inline">
-                        <h4>Escolas</h4>
+                        <h4>Alunos</h4>
                         <span>Lista dos Alunos</span>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr role="row" class="odd">
-                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Escola" onclick="location.href='@Url.Action("Edit", "Alunos",new { id = @item.Codigo})'"> <i class="icofont icofont-ui-edit"></i></button>                    <button onclick="deletarAlunos(@item.Codigo)" style="float:none" class="btn-danger btn-circle bt_acao" type="button" title="Excluir Escola"><i class="icofont icofont-ui-close"></i></button></td>
+                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Escola" onclick="location.href='@Url.Action("Edit", "Alunos",new { id = @item.Codigo})'"> <i class="icofont icofont-ui-edit"></i></button>                    <button onclick="deletarAluno(@item.Codigo)" style="float:none" class="btn-danger btn-circle bt_acao" type="button" title="Excluir Escola"><i class="icofont icofont-ui-close"></i></button></td>
                                             <td class="sorting_1">
                                                 @Html.DisplayFor(modelItem => item.Codigo)
                                             </td>
