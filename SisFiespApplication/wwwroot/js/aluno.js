@@ -201,14 +201,10 @@ function salvarAlunoEdit() {
 		dados += '{name:"Observacao", value:"' + $('#observacaoAluno').val() + '"},';
 	}
 	if ($('#idAluno').val() != "") {
-		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'  ; 
+		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'; 
 	}
 	dadosEnvio = eval("[" + dados + "]");
-
-	/*
-	 * teste
-	 * */
-
+	
 	$.ajax({
 		url: "/Alunos/Edit",
 		method: "POST",
