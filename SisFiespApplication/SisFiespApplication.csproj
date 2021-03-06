@@ -8,11 +8,13 @@
     <Content Remove="wwwroot\js\aluno.js" />
     <Content Remove="wwwroot\js\diagnostico.js" />
     <Content Remove="wwwroot\js\escola.js" />
+    <Content Remove="wwwroot\js\modalidade.js" />
     <Content Remove="wwwroot\js\usuario.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\js\aluno.js" />
+    <None Include="wwwroot\js\modalidade.js" />
     <None Include="wwwroot\js\diagnostico.js" />
     <None Include="wwwroot\js\escola.js" />
     <None Include="wwwroot\js\usuario.js" />

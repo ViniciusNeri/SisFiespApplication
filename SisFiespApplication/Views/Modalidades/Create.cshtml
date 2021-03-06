@@ -1,0 +1,85 @@
+﻿@model SisFiespApplication.Models.Modalidade
+
+@{
+    ViewData["Title"] = "Nova Modalidade";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="page-wrapper" id="pagina">
+        <!-- Page-header start -->
+        <div class="page-header card">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="icofont icofont-hat bg-c-pink"></i>
+                        <div class="d-inline">
+                            <h4>Modalidade/Fase</h4>
+                            <span>Lista das Modalidades/Fases</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="icofont icofont-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Modalidade</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Lista das Modalidades</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page-header end -->
+        <!-- Page-body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Zero config.table start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-right">
+                                <i class="icofont icofont-spinner-alt-5"></i>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <form>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-sm-1 mobile-inputs">
+                                        <h1 class="sub-title">Código:</h1>
+                                        <input id="codigoModalidade" class="form-control" disabled="disabled" />
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <h1 class="sub-title">Nome:</h1>
+                                        <input id="nomeModalidade" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input style="float:right;margin-right:10px" type="button" id="btCancelarModalidade" value="Cancelar" onclick="location.href='@Url.Action("Index", "Modalidades")'" class="btn btn-danger" />
+                                    <input style="float:right;margin-right:10px" type="button" onclick="salvarModalidade('Incluir')" value="Salvar" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

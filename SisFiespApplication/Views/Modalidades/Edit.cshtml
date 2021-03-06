@@ -1,9 +1,12 @@
-﻿@model SisFiespApplication.Models.Diagnostico
+﻿@model SisFiespApplication.Models.Modalidade
 
 @{
-    ViewData["Title"] = "Novo Diagnóstico";
+    ViewData["Title"] = "Editar Modalidade";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<input type="hidden" id="idModalidade" value="@Model.Codigo">
 
 <div class="page-wrapper" id="pagina">
     <!-- Page-header start -->
@@ -13,8 +16,8 @@
                 <div class="page-header-title">
                     <i class="icofont icofont-hat bg-c-pink"></i>
                     <div class="d-inline">
-                        <h4>Diagnóticos</h4>
-                        <span>Incluir Diagnóticos</span>
+                        <h4>Modalidade/Fase</h4>
+                        <span>Lista das Modalidades/Fases</span>
                     </div>
                 </div>
             </div>
@@ -27,16 +30,17 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#!">Diagnóticos</a>
+                            <a href="#!">Modalidade</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#!">Incluir Diagnóticos</a>
+                            <a href="#!">Lista das Modalidades</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Page-header end -->
     <!-- Page-body start -->
     <div class="page-body">
@@ -55,17 +59,17 @@
                             <div class="row">
                                 <div class="col-sm-1 mobile-inputs">
                                     <h1 class="sub-title">Código:</h1>
-                                    <input id="codigoDiagnostico" class="form-control" disabled="disabled" />
+                                    <input id="codigoModalidade" class="form-control" value="@Model.Codigo" disabled="disabled" />
                                 </div>
                                 <div class="col-sm-6 ">
                                     <h1 class="sub-title">Nome:</h1>
-                                    <input id="nomeDiagnostico" class="form-control" />
+                                    <input id="nomeModalidade" class="form-control" value="@Model.Nome" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <input style="float:right;margin-right:10px" type="button" id="btCancelarDiagnostico" value="Cancelar" onclick="location.href='@Url.Action("Index", "Diagnosticos")'" class="btn btn-danger" />
-                                <input style="float:right;margin-right:10px" type="button" onclick="salvarDiagnostico('Incluir')" value="Salvar" class="btn btn-primary" />
+                                <input style="float:right;margin-right:10px" type="button" id="btCancelarModalidade" value="Cancelar" onclick="location.href='@Url.Action("Index", "Modalidades")'" class="btn btn-danger" />
+                                <input style="float:right;margin-right:10px" type="button" onclick="salvarModalidade('editar')" value="Salvar" class="btn btn-primary" />
                             </div>
                         </form>
                     </div>
@@ -74,11 +78,7 @@
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
 
 

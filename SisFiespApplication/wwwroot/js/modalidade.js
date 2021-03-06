@@ -1,9 +1,9 @@
 ﻿
-function deletarDiagnostico(idDiagnostico) {
+function deletarModalidade(idModalidade) {
 
 	swal({
-		title: "Excluir Diagnostico",
-		text: "Confirma a exclusão do Diagnostico?",
+		title: "Excluir Modalidade",
+		text: "Confirma a exclusão da Modalidade?",
 		icon: "warning",
 		buttons: true,
 		dangerMode: true,
@@ -12,20 +12,20 @@ function deletarDiagnostico(idDiagnostico) {
 			if (willDelete) {
 				var dados = "";
 
-				if (idDiagnostico != "") {
-					dados += '{name:"Id", value:"' + idDiagnostico + '"},';
+				if (idModalidade != "") {
+					dados += '{name:"Id", value:"' + idModalidade + '"},';
 				}
 
 				dadosEnvio = eval("[" + dados + "]");
 
 				$.ajax({
-					url: "/Diagnosticos/Delete",
+					url: "/Modalidades/Delete",
 					method: "POST",
 					data: dadosEnvio,
 					success: function (data) {
 						swal({
 							title: "Sucesso!",
-							text: "Diagnostico excluido com Sucesso",
+							text: "Modalidade excluida com Sucesso",
 							icon: "success",
 						});
 
@@ -48,25 +48,25 @@ function deletarDiagnostico(idDiagnostico) {
 		});
 }
 
-function salvarDiagnostico(acao) {
+function salvarModalidade(acao) {
 
 	
 	var dados = "";
 	var method = "Create";
-	var mensagem = "Diagnostico cadastrado com Sucesso.";
+	var mensagem = "Modalidade cadastrada com Sucesso.";
 
 	if (acao != 'Incluir') {
 
 		method = "Edit";
-		mensagem = "Diagnostico editado com Sucesso.";
+		mensagem = "Modalidade editada com Sucesso.";
 
-		if ($('#idDiagnostico').val() != "") {
-			dados += '{name:"Codigo", value:"' + $('#idDiagnostico').val() + '"},';
+		if ($('#idModalidade').val() != "") {
+			dados += '{name:"Codigo", value:"' + $('#idModalidade').val() + '"},';
 		}
 	}
 
-	if ($('#nomeDiagnostico').val() != "") {
-		dados += '{name:"Nome", value:"' + $('#nomeDiagnostico').val() + '"},';
+	if ($('#nomeModalidade').val() != "") {
+		dados += '{name:"Nome", value:"' + $('#nomeModalidade').val() + '"},';
 	} else {
 		swal({
 			title: "Erro ao cadastrar!",
@@ -79,7 +79,7 @@ function salvarDiagnostico(acao) {
 	dadosEnvio = eval("[" + dados + "]");
 
 	$.ajax({
-		url: "/Diagnosticos/" + method,
+		url: "/Modalidades/" + method,
 		method: "POST",
 		data: dadosEnvio,
 		success: function (data) {
