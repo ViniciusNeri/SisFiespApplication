@@ -205,6 +205,10 @@ function salvarAlunoEdit() {
 	}
 	dadosEnvio = eval("[" + dados + "]");
 
+	/*
+	 * teste
+	 * */
+
 	$.ajax({
 		url: "/Alunos/Edit",
 		method: "POST",
