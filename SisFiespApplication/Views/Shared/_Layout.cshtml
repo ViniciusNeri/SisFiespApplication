@@ -428,12 +428,27 @@
                             <div class="">
                             </div>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
-                            <ul class="pcoded-item pcoded-left-item">
+                            <ul class="pcoded-item pcoded-left-item" style="position: relative; top: 0px; left: 0px; width: 270px;">
                                 <li class="">    <a href="index.html">        <span class="pcoded-micon"><i class="ti-home"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Dashboard</span>        <span class="pcoded-mcaret"></span>    </a></li>
-                                <li class="">    <a asp-area="" asp-controller="Escolas" asp-action="Index" id="menuEscola">        <span class="pcoded-micon"><i class="icofont icofont-hat"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Escolas</span>        <span class="pcoded-mcaret"></span>    </a></li>
-                                <li class="">    <a asp-controller="Alunos" asp-action="Index" id="menuAlunos">        <span class="pcoded-micon"><i class="icofont icofont-group-students"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Alunos</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon">
+                                            <i class="icofont icofont-hat"></i><b>C</b>
+                                        </span>
+                                        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Cadastros</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">    <a asp-area="" asp-controller="Escolas" asp-action="Index" id="menuEscola">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Escolas</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                        <li class="">    <a asp-area="" asp-controller="Diagnosticos" asp-action="Index" id="menuEscola">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Diagnósticos</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                        <li class="">    <a asp-area="" asp-controller="Modalidade" asp-action="Index" id="menuEscola">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Modalidade/Fase</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                        <li class="">    <a asp-controller="Alunos" asp-action="Index" id="menuAlunos">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Alunos</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                        <li class="">    <a asp-area="" asp-controller="Usuarios" asp-action="Index" id="menuUsuario">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Usuários</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                    </ul>
+                                </li>
                                 <li class="">    <a href="avaliacao.html">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Avaliações</span>        <span class="pcoded-mcaret"></span>    </a></li>
-                                <li class="">    <a asp-area="" asp-controller="Usuarios" asp-action="Index" id="menuUsuario">        <span class="pcoded-micon"><i class="icofont icofont-student-alt"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Usuários</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                <li class="">    <a href="avaliacao.html">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Relatórios</span>        <span class="pcoded-mcaret"></span>    </a></li>
+
                             </ul>
                         </div>
                     </nav>
@@ -521,7 +536,9 @@
     <script src="~/js/usuario.js" asp-append-version="true"></script>
     <script src="~/js/escola.js" asp-append-version="true"></script>
     <script src="~/js/aluno.js" asp-append-version="true"></script>
+    <script src="~/js/diagnostico.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
 
 </html>
