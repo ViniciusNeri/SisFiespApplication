@@ -1,0 +1,49 @@
+﻿@model SisFiespApplication.Models.Avaliacao
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avaliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlunoCodigo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlunoCodigo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCodigo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCodigo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DtCadastro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DtCadastro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DtAlteracao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DtAlteracao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Codigo">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

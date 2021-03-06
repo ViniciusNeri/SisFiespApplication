@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -113,6 +115,10 @@ namespace SisFiespApplication.Controllers
 				ViewData["Diagnosticos"] = _context.Diagnostico.ToList();
 
 				var aluno = await _context.Aluno.FindAsync(id);
+
+				StringWriter myWriter = new StringWriter();
+				HttpUtility.HtmlDecode(aluno.Observacao, myWriter);
+				aluno.Observacao = myWriter.ToString();
 
 				if (aluno == null)
 				{
