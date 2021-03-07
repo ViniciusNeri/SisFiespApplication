@@ -223,7 +223,8 @@
                             <div class="row">
                                 <div class="col-sm-12 ">
                                     <h1 class="sub-title">Observações do aluno:</h1>
-                                    <textarea rows="5" cols="5" id="observacaoAluno" class="form-control">@Model.Observacao</textarea>
+                                    <textarea rows="10" cols="5" id="observacaoAluno" maxlength="8000" class="form-control">@Html.Raw(@Model.Observacao)</textarea>
+
                                 </div>
 
                             </div>

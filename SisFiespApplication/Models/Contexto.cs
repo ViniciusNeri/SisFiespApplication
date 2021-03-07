@@ -24,5 +24,7 @@ namespace SisFiespApplication.Models
 
         public DbSet<SisFiespApplication.Models.Modalidade> Modalidade { get; set; }
 
+        public DbSet<SisFiespApplication.Models.Avaliacao> Avaliacao { get; set; }
+
     }
 }

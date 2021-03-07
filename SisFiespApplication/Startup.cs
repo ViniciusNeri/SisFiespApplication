@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,10 @@ namespace SisFiespApplication
 			services.AddControllersWithViews();
 
 			services.AddDistributedMemoryCache();
+
+			services.AddWebEncoders(o => {
+				o.TextEncoderSettings = new System.Text.Encodings.Web.TextEncoderSettings(UnicodeRanges.All);
+			});
 
 			services.AddSession(options =>
 			{

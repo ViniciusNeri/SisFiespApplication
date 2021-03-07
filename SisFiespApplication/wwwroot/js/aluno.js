@@ -1,4 +1,10 @@
-﻿
+﻿$(document).ready(function () {
+	if ($("#observacaoAluno").val() != "" && $("#observacaoAluno").val() != undefined) {
+		$("#observacaoAluno").val(unescape($("#observacaoAluno").val()));		
+	}
+	
+});
+
 function deletarAluno(idAluno) {
 
 	swal({
@@ -104,7 +110,7 @@ function salvarAluno() {
 		dados += '{name:"Mapeado", value:"0"},';
 	}
 	if ($('#observacaoAluno').val() != "") {
-		dados += '{name:"Observacao", value:"' + $('#observacaoAluno').val() + '"},';
+		dados += '{name:"Observacao", value:"' + escape($('#observacaoAluno').val()) + '"},';
 	}
 	
 	dadosEnvio = eval("[" + dados + "]");
@@ -201,7 +207,7 @@ function salvarAlunoEdit() {
 		dados += '{name:"Mapeado", value:"0"},';
 	}
 	if ($('#observacaoAluno').val() != "") {
-		dados += '{name:"Observacao", value:"' + $('#observacaoAluno').val() + '"},';
+		dados += '{name:"Observacao", value:"' + escape($('#observacaoAluno').val()) + '"},';
 	}
 	if ($('#idAluno').val() != "") {
 		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'; 
