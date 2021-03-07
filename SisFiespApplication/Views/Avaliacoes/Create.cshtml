@@ -7,176 +7,398 @@
 
 
 
-    <div class="page-wrapper" id="pagina">
-        <!-- Page-header start -->
-        <div class="page-header card">
-            <div class="row align-items-end">
-                <div class="col-lg-8">
-                    <div class="page-header-title">
-                        <i class="icofont icofont-paper bg-c-yellow"></i>
-                        <div class="d-inline">
-                            <h4>Avaliações</h4>
-                            <span>Lista das Avaliações</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="page-header-breadcrumb">
-                        <ul class="breadcrumb-title">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <i class="icofont icofont-home"></i>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#!">Avaliações</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#!">Lista das Avaliações</a>
-                            </li>
-                        </ul>
+<div class="page-wrapper" id="pagina">
+    <!-- Page-header start -->
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icofont icofont-paper bg-c-yellow"></i>
+                    <div class="d-inline">
+                        <h4>Avaliações</h4>
+                        <span>Lista das Avaliações</span>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Page-header end -->
-        <!-- Page-body start -->
-        <div class="page-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- Zero config.table start -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-header-right">
-                                <i class="icofont icofont-spinner-alt-5"></i>
-                            </div>
-                        </div>
-                        <div class="card-block">
-                            <form asp-action="Create">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="row">
-                                    <div class="col-sm-1 mobile-inputs">
-                                        <h1 class="sub-title">Cod:</h1>
-                                        <input id="codigoAluno" disabled="disabled" class="form-control" />
-                                    </div>
-                                    <div class="col-sm-6 ">
-                                        <h1 class="sub-title">Nome:</h1>
-                                        <input id="nomeAluno" class="form-control" />
-                                    </div>
-                                    <div class="col-sm-2 mobile-inputs ">
-                                        <h1 class="sub-title">Turno:</h1>
-                                        <select id="TurnoAluno" class="form-control form-control-primary">
-                                            <option value="1">Manhã</option>
-                                            <option value="2">Tarde</option>
-                                            <option value="3">Noite</option>
-                                        </select>
-                                    </div>
-                                    @*<div class="col-sm-2 mobile-inputs ">
-                                        <h1 class="sub-title">Turno:</h1>
-                                        <select id="StatusAluno" class="form-control form-control-primary">
-                                            <option value="1">Ativo</option>
-                                            <option value="0">Inativo</option>
-                                        </select>
-                                    </div>*@
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 ">
-                                        <h1 class="sub-title"></h1>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4 ">
-                                        <h1 class="sub-title">Nome Mãe:</h1>
-                                        <input id="NomeMae" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col-sm-4 ">
-                                        <h1 class="sub-title">Nome Pai:</h1>
-                                        <input id="NomePai" class="form-control" type="text" />
-                                    </div>
-                                    <div class="col-sm-3 ">
-                                        <h1 class="sub-title">Data Nascimento:</h1>
-                                        <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 ">
-                                        <h1 class="sub-title"></h1>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h1 class="sub-title">Escola:</h1>
-                                        <select id="codigoEscola" class="form-control form-control-primary">
-                                            <option value="">  </option>
-                                            @if (ViewData["Escolas"] as IEnumerable<Escola> != null)
-                                            {
-                                                foreach (var escola in ViewData["Escolas"] as IEnumerable<Escola>)
-                                                {
-                                                    <option value="@escola.Codigo">@escola.Nome</option>
-                                                }
-                                            }
-
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h1 class="sub-title">Modalidade/Fase:</h1>
-                                        <select id="modalidadeAluno" class="form-control form-control-primary">
-                                            <option value="">  </option>
-                                            @if (ViewData["Modalidades"] as IEnumerable<Modalidade> != null)
-                                            {
-                                                foreach (var modalidade in ViewData["Modalidades"] as IEnumerable<Modalidade>)
-                                                {
-                                                    <option value="@modalidade.Codigo">@modalidade.Nome</option>
-                                                }
-                                            }
-
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h1 class="sub-title">Diagnostico:</h1>
-                                        <select id="diagnosticoAluno" class="form-control form-control-primary">
-                                            <option value="">  </option>
-                                            @if (ViewData["Diagnosticos"] as IEnumerable<Diagnostico> != null)
-                                            {
-                                                foreach (var diagnostico in ViewData["Diagnosticos"] as IEnumerable<Diagnostico>)
-                                                {
-                                                    <option value="@diagnostico.Codigo">@diagnostico.Nome</option>
-                                                }
-                                            }
-
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <h1 class="sub-title">Mapeado:</h1>
-                                        <input id="mapeadoAluno" class="form-control" type="checkbox" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 ">
-                                        <h1 class="sub-title"></h1>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 ">
-                                        <h1 class="sub-title">Observações do aluno:</h1>
-                                        <textarea rows="10" cols="5" id="observacaoAluno" class="form-control" maxlength="8000"></textarea>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 ">
-                                        <h1 class="sub-title"></h1>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input style="float:right;margin-right:10px" type="button" id="btCancelarAluno" value="Cancelar" onclick="location.href='@Url.Action("Index", "Alunos")'" class="btn btn-danger" />
-                                    <input style="float:right;margin-right:10px" type="button" onclick="salvarAluno()" value="Salvar" class="btn btn-primary" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Avaliações</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Lista das Avaliações</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Page-header end -->
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Tab variant tab card start -->
+                <div class="card">
+                    <div class="card-block" style="height:120px;">
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-3 m-b-30">
+                                <h4 class="sub-title">Aluno</h4>
+                                <select name="alunoCodigo" id="alunoCodigo" class="form-control form-control-primary" onchange="buscarDados()">
+                                    <option value="">  </option>
+                                    @if (ViewData["Alunos"] as IEnumerable<Aluno> != null)
+                                    {
+                                        foreach (var Aluno in ViewData["Alunos"] as IEnumerable<Aluno>)
+                                        {
+                                            <option value="@Aluno.Codigo">@Aluno.Nome</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-xl-3 m-b-30">
+                                <h4 class="sub-title">Especialista</h4>
+                                <select name="UsuarioCodigo" id="UsuarioCodigo" class="form-control form-control-primary">
+                                    <option value="">  </option>
+                                    @if (ViewData["Usuarios"] as IEnumerable<Usuario> != null)
+                                    {
+                                        foreach (var Usuario in ViewData["Usuarios"] as IEnumerable<Usuario>)
+                                        {
+                                            <option value="@Usuario.Codigo">@Usuario.Nome</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <input style="position: absolute;top: 63px;right: 406px;" type="button" onclick="salvarAluno()" value="Salvar" class="btn btn-primary" />
+                    </div>
+                    <div class="card-block tab-icon" id="dados" style="height:530px;display:none">
+                        <!-- Row start -->
+                        <div class="row">
+                            <div class="col-lg-12 col-xl-12">
+                                <!-- <h6 class="sub-title">Tab With Icon</h6> -->
+                                <div class="sub-title">Dados</div>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs md-tabs " role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#home7" role="tab"><i class="icofont icofont-ui-user"></i>Aluno</a>
+                                        <div class="slide"></div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#profile7" role="tab"><i class="icofont  icofont-home "></i>Escola</a>
+                                        <div class="slide"></div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#messages7" role="tab"><i class="icofont icofont-ui-message"></i>Observações</a>
+                                        <div class="slide"></div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#settings7" role="tab"><i class="icofont icofont-ui-settings"></i>Avaliação</a>
+                                        <div class="slide"></div>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content card-block">
+                                    <div class="tab-pane active" id="home7" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-block user-detail-card" style="height:370px;">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                        <div class="contact-icon">
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 user-detail">
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Nome :</h6>
+                                                            </div>
+                                                            <div id="nomeAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Data Nascimento :</h6>
+                                                            </div>
+                                                            <div id="dtNascimentoAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-education"></i>Modalidade/Fase :</h6>
+                                                            </div>
+                                                            <div id="modalidadeAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-stethoscope"></i>Diagnótico :</h6>
+                                                            </div>
+                                                            <div id="diagnosticoAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-people"></i>Apoio Escolar :</h6>
+                                                            </div>
+                                                            <div class="col-sm-7">
+                                                                <h6 class="m-b-30">Alterar</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-woman-in-glasses"></i>Nome Mãe :</h6>
+                                                            </div>
+                                                            <div id="nomeMaeAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-waiter"></i>Nome Pai :</h6>
+                                                            </div>
+                                                            <div id="nomePaiAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-weather"></i>Turno :</h6>
+                                                            </div>
+                                                            <div id="turnoAluno" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="profile7" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-block user-detail-card" style="height:370px;">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                        <div class="contact-icon">
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 user-detail">
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Nº UE :</h6>
+                                                            </div>
+                                                            <div id="nueEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Escola :</h6>
+                                                            </div>
+                                                            <div id="nomeEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Telefone :</h6>
+                                                            </div>
+                                                            <div id="telefoneEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Telefone 2 :</h6>
+                                                            </div>
+                                                            <div id="telefone2Escola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Cidade :</h6>
+                                                            </div>
+                                                            <div id="cidadeEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Bairro :</h6>
+                                                            </div>
+                                                            <div id="bairroEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Diretor(a) :</h6>
+                                                            </div>
+                                                            <div id="diretorEscola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>CP 1 :</h6>
+                                                            </div>
+                                                            <div id="cp1Escola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>CP 2 :</h6>
+                                                            </div>
+                                                            <div id="cp2Escola" class="col-sm-7">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="messages7" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-block user-detail-card" style="height:370px;">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                        <div class="contact-icon">
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 user-detail">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+                                                                <textarea id="observacaoAluno" rows="15" cols="75"></textarea>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="settings7" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-block user-detail-card" style="height:370px;">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                        <div class="contact-icon">
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                                            <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 user-detail">
+                                                        <div class="row">
+                                                            <div class="col-sm-10">
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Row end -->
+                    </div>
+                </div>
+                <!-- Tab variant tab card start -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function buscarDados() {
+
+        if ($("#alunoCodigo").val() == "") {
+            $("#dados").attr("style", "display:none")
+        } else {
+
+            var dados = "";
+
+            if ($('#alunoCodigo').val() != "") {
+                dados += '{name:"alunoCodigo", value:"' + $('#alunoCodigo').val() + '"},';
+            }
+
+            dadosEnvio = eval("[" + dados + "]");
+
+
+            $.ajax({
+                url: "/Avaliacoes/DetalheAluno",
+                method: "GET",
+                data: dadosEnvio,
+                dataType: "json",
+                success: function (data) {                
+
+                    //Aluno
+                    $("#nomeAluno").html(" <h6 class=\"m - b - 30\">" + data.nomeAluno + "</h6>");
+                    $("#dtNascimentoAluno").html(" <h6 class=\"m - b - 30\">" + data.dataNascimentoAluno + "</h6>");
+                    $("#modalidadeAluno").html(" <h6 class=\"m - b - 30\">" + data.modalidadeAluno + "</h6>");
+                    $("#diagnosticoAluno").html(" <h6 class=\"m - b - 30\">" + data.diagnoscoAluno + "</h6>");
+                    $("#nomeMaeAluno").html(" <h6 class=\"m - b - 30\">" + data.nomeMae + "</h6>");
+                    $("#nomePaiAluno").html(" <h6 class=\"m - b - 30\">" + data.nomePai + "</h6>");
+                    $("#turnoAluno").html(" <h6 class=\"m - b - 30\">" + data.turnoAluno + "</h6>");
+                    $("#observacaoAluno").val(unescape(data.observacaoAluno));
+
+                    //Escola
+                    $("#nueEscola").html(" <h6 class=\"m - b - 30\">" + data.nueEscola + "</h6>");
+                    $("#nomeEscola").html(" <h6 class=\"m - b - 30\">" + data.nomeEscola + "</h6>");
+                    $("#telefoneEscola").html(" <h6 class=\"m - b - 30\">" + data.telefoneEscola + "</h6>");
+                    $("#telefone2Escola").html(" <h6 class=\"m - b - 30\">" + data.telefone2Escola + "</h6>");
+                    $("#cidadeEscola").html(" <h6 class=\"m - b - 30\">" + data.cidadeEscola + "</h6>");
+                    $("#bairroEscola").html(" <h6 class=\"m - b - 30\">" + data.bairroEscola + "</h6>");
+                    $("#diretorEscola").html(" <h6 class=\"m - b - 30\">" + data.diretorEscola + "</h6>");
+                    $("#cp1Escola").html(" <h6 class=\"m - b - 30\">" + data.cp1Escola + "</h6>");
+                    $("#cp2Escola").html(" <h6 class=\"m - b - 30\">" + data.cp2Escola + "</h6>");
+
+                    $("#dados").attr("style", "display:block");
+                },
+                error: function (data) {
+                    swal({
+                        title: "Erro ao cadastrar!",
+                        text: "Erro desconhecido!",
+                        icon: "error",
+                    });
+                }
+            });
+
+            
+        }
+    }
+
+</script>
