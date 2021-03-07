@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,34 @@ namespace SisFiespApplication.Controllers
         // GET: Avaliacoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Avaliacao.ToListAsync());
+            if (HttpContext.Session.GetString("userName") != null)
+            {
+
+                ViewData["Usuario"] = HttpContext.Session.GetString("nome");
+                return View(await (from av in _context.Avaliacao
+                                   join al in _context.Aluno
+                                   on av.AlunoCodigo
+                                   equals al.Codigo
+                                   join us in _context.Usuario
+                                   on av.UsuarioCodigo
+                                   equals us.Codigo 
+                                   join es in _context.Escola
+                                   on al.EscolaCodigo
+                                   equals es.Codigo
+                                   select new Avaliacao
+                                   {
+                                       Codigo = av.Codigo,
+                                       AlunoNome = al.Nome,
+                                       EspecialistaNome = us.Nome,
+                                       EscolaNome = es.Nome,
+                                       DtCadastro = av.DtCadastro,
+                                       Status = av.Status
+                                   }).ToListAsync());
+            }
+            else
+            {
+                return Json(new { status = "error", message = "error creating customer" });
+            }
         }
 
         // GET: Avaliacoes/Details/5

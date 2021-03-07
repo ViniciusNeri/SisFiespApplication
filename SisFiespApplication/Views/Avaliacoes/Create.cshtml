@@ -1,51 +1,182 @@
 ﻿@model SisFiespApplication.Models.Avaliacao
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nova Avaliacao";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
 
-<h4>Avaliacao</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AlunoCodigo" class="control-label"></label>
-                <input asp-for="AlunoCodigo" class="form-control" />
-                <span asp-validation-for="AlunoCodigo" class="text-danger"></span>
+
+    <div class="page-wrapper" id="pagina">
+        <!-- Page-header start -->
+        <div class="page-header card">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="icofont icofont-paper bg-c-yellow"></i>
+                        <div class="d-inline">
+                            <h4>Avaliações</h4>
+                            <span>Lista das Avaliações</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="icofont icofont-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Avaliações</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Lista das Avaliações</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="UsuarioCodigo" class="control-label"></label>
-                <input asp-for="UsuarioCodigo" class="form-control" />
-                <span asp-validation-for="UsuarioCodigo" class="text-danger"></span>
+        </div>
+        <!-- Page-header end -->
+        <!-- Page-body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Zero config.table start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-header-right">
+                                <i class="icofont icofont-spinner-alt-5"></i>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-sm-1 mobile-inputs">
+                                        <h1 class="sub-title">Cod:</h1>
+                                        <input id="codigoAluno" disabled="disabled" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <h1 class="sub-title">Nome:</h1>
+                                        <input id="nomeAluno" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-2 mobile-inputs ">
+                                        <h1 class="sub-title">Turno:</h1>
+                                        <select id="TurnoAluno" class="form-control form-control-primary">
+                                            <option value="1">Manhã</option>
+                                            <option value="2">Tarde</option>
+                                            <option value="3">Noite</option>
+                                        </select>
+                                    </div>
+                                    @*<div class="col-sm-2 mobile-inputs ">
+                                        <h1 class="sub-title">Turno:</h1>
+                                        <select id="StatusAluno" class="form-control form-control-primary">
+                                            <option value="1">Ativo</option>
+                                            <option value="0">Inativo</option>
+                                        </select>
+                                    </div>*@
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 ">
+                                        <h1 class="sub-title"></h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 ">
+                                        <h1 class="sub-title">Nome Mãe:</h1>
+                                        <input id="NomeMae" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col-sm-4 ">
+                                        <h1 class="sub-title">Nome Pai:</h1>
+                                        <input id="NomePai" class="form-control" type="text" />
+                                    </div>
+                                    <div class="col-sm-3 ">
+                                        <h1 class="sub-title">Data Nascimento:</h1>
+                                        <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 ">
+                                        <h1 class="sub-title"></h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h1 class="sub-title">Escola:</h1>
+                                        <select id="codigoEscola" class="form-control form-control-primary">
+                                            <option value="">  </option>
+                                            @if (ViewData["Escolas"] as IEnumerable<Escola> != null)
+                                            {
+                                                foreach (var escola in ViewData["Escolas"] as IEnumerable<Escola>)
+                                                {
+                                                    <option value="@escola.Codigo">@escola.Nome</option>
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h1 class="sub-title">Modalidade/Fase:</h1>
+                                        <select id="modalidadeAluno" class="form-control form-control-primary">
+                                            <option value="">  </option>
+                                            @if (ViewData["Modalidades"] as IEnumerable<Modalidade> != null)
+                                            {
+                                                foreach (var modalidade in ViewData["Modalidades"] as IEnumerable<Modalidade>)
+                                                {
+                                                    <option value="@modalidade.Codigo">@modalidade.Nome</option>
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h1 class="sub-title">Diagnostico:</h1>
+                                        <select id="diagnosticoAluno" class="form-control form-control-primary">
+                                            <option value="">  </option>
+                                            @if (ViewData["Diagnosticos"] as IEnumerable<Diagnostico> != null)
+                                            {
+                                                foreach (var diagnostico in ViewData["Diagnosticos"] as IEnumerable<Diagnostico>)
+                                                {
+                                                    <option value="@diagnostico.Codigo">@diagnostico.Nome</option>
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h1 class="sub-title">Mapeado:</h1>
+                                        <input id="mapeadoAluno" class="form-control" type="checkbox" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 ">
+                                        <h1 class="sub-title"></h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 ">
+                                        <h1 class="sub-title">Observações do aluno:</h1>
+                                        <textarea rows="10" cols="5" id="observacaoAluno" class="form-control" maxlength="8000"></textarea>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 ">
+                                        <h1 class="sub-title"></h1>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input style="float:right;margin-right:10px" type="button" id="btCancelarAluno" value="Cancelar" onclick="location.href='@Url.Action("Index", "Alunos")'" class="btn btn-danger" />
+                                    <input style="float:right;margin-right:10px" type="button" onclick="salvarAluno()" value="Salvar" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DtCadastro" class="control-label"></label>
-                <input asp-for="DtCadastro" class="form-control" />
-                <span asp-validation-for="DtCadastro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DtAlteracao" class="control-label"></label>
-                <input asp-for="DtAlteracao" class="form-control" />
-                <span asp-validation-for="DtAlteracao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
