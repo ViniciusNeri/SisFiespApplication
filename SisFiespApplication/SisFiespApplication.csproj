@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,12 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\avaliacao.js" />
-    <None Include="wwwroot\js\aluno.js" />
-    <None Include="wwwroot\js\modalidade.js" />
-    <None Include="wwwroot\js\diagnostico.js" />
-    <None Include="wwwroot\js\escola.js" />
-    <None Include="wwwroot\js\usuario.js" />
+    <None Include="wwwroot\jsView\avaliacao.js" />
+    <None Include="wwwroot\jsView\aluno.js" />
+    <None Include="wwwroot\jsView\modalidade.js" />
+    <None Include="wwwroot\jsView\diagnostico.js" />
+    <None Include="wwwroot\jsView\escola.js" />
+    <None Include="wwwroot\jsView\usuario.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +34,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\arquivos\" />
+    <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
 </Project>
