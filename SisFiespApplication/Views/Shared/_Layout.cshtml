@@ -34,10 +34,16 @@
     <link rel="stylesheet" type="text/css" href="~/assets/pages/menu-search/css/component.css">
     <!-- Horizontal-Timeline css -->
     <link rel="stylesheet" type="text/css" href="~/assets/pages/dashboard/horizontal-timeline/css/style.css">
+    <!-- Time line css -->
+    <link rel="stylesheet" type="text/css" href="~/assets/pages/timeline/style.css">
     <!-- Chartlist chart css -->
     <link rel="stylesheet" href="~/bower_components/chartist/css/chartist.css" type="text/css" media="all">
     <!-- C3 chart -->
     <link rel="stylesheet" href="~/bower_components/c3/css/c3.css" type="text/css" media="all">
+    <!-- Switch component css -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/switchery/css/switchery.min.css">
+    <!-- Tags css -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css" />
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
 
@@ -47,6 +53,47 @@
     <link rel="stylesheet" type="text/css" href="~/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets/pages/data-table/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="~/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="~/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="~/bower_components/modernizr/js/modernizr.js"></script>
+    <script type="text/javascript" src="~/bower_components/modernizr/js/css-scrollbars.js"></script>
+
+    <!-- Todo js -->
+    <script type="text/javascript" src="~/assets/pages/todo/todo.js"></script>
+    <!-- Horizontal-Timeline js -->
+    <script type="text/javascript" src="~/assets/pages/dashboard/horizontal-timeline/js/main.js"></script>
+    <!-- AM charts -->
+    <script src="~/assets/pages/widget/amchart/amcharts.js"></script>
+    <script src="~/assets/pages/widget/amchart/gauge.js"></script>
+    <script src="~/assets/pages/widget/amchart/pie.js"></script>
+    <script src="~/assets/pages/widget/amchart/serial.js"></script>
+    <script src="~/assets/pages/widget/amchart/light.js"></script>
+    <!-- peity Chart js -->
+    <script src="~/bower_components/peity/js/jquery.peity.js "></script>
+
+    <!-- Chartlist charts -->
+    <script src="~/bower_components/chartist/js/chartist.js "></script>
+    <script src="~/assets/pages/chart/chartlist/js/chartist-plugin-threshold.js "></script>
+    <script src="~/assets/pages/chart/chartlist/js/chartist-plugin-tooltip.min.js "></script>
+    <!-- c3 chart js -->
+    <script src="~/bower_components/d3/js/d3.min.js"></script>
+    <script src="~/bower_components/c3/js/c3.js"></script>
+    <!-- Chart js -->
+    <script type="text/javascript" src="~/bower_components/chart.js/js/Chart.js"></script>
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="~/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="~/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+    <!-- Max-length js -->
+    <script type="text/javascript" src="~/bower_components/bootstrap-maxlength/js/bootstrap-maxlength.js"></script>
 
 </head>
 
@@ -446,7 +493,7 @@
                                         <li class="">    <a asp-area="" asp-controller="Usuarios" asp-action="Index" id="menuUsuario">        <span class="pcoded-micon"><i class="ti-angle-right"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Usuários</span>        <span class="pcoded-mcaret"></span>    </a></li>
                                     </ul>
                                 </li>
-                                <li class="">    <a  asp-area="" asp-controller="Avaliacoes" asp-action="Index" id="menuAvaliacao">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Avaliações</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                <li class="">    <a asp-area="" asp-controller="Avaliacoes" asp-action="Index" id="menuAvaliacao">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Avaliações</span>        <span class="pcoded-mcaret"></span>    </a></li>
                                 <li class="">    <a href="avaliacao.html">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Relatórios</span>        <span class="pcoded-mcaret"></span>    </a></li>
 
                             </ul>
@@ -464,44 +511,7 @@
         </div>
     </div>
     <!-- Warning Section Ends -->
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="~/bower_components/jquery/js/jquery.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/popper.js/js/popper.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/bootstrap/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="~/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
-    <!-- modernizr js -->
-    <script type="text/javascript" src="~/bower_components/modernizr/js/modernizr.js"></script>
-    <script type="text/javascript" src="~/bower_components/modernizr/js/css-scrollbars.js"></script>
 
-    <!-- Todo js -->
-    <script type="text/javascript" src="~/assets/pages/todo/todo.js"></script>
-    <!-- Horizontal-Timeline js -->
-    <script type="text/javascript" src="~/assets/pages/dashboard/horizontal-timeline/js/main.js"></script>
-    <!-- AM charts -->
-    <script src="~/assets/pages/widget/amchart/amcharts.js"></script>
-    <script src="~/assets/pages/widget/amchart/gauge.js"></script>
-    <script src="~/assets/pages/widget/amchart/pie.js"></script>
-    <script src="~/assets/pages/widget/amchart/serial.js"></script>
-    <script src="~/assets/pages/widget/amchart/light.js"></script>
-    <!-- peity Chart js -->
-    <script src="~/bower_components/peity/js/jquery.peity.js "></script>
-
-    <!-- Chartlist charts -->
-    <script src="~/bower_components/chartist/js/chartist.js "></script>
-    <script src="~/assets/pages/chart/chartlist/js/chartist-plugin-threshold.js "></script>
-    <script src="~/assets/pages/chart/chartlist/js/chartist-plugin-tooltip.min.js "></script>
-    <!-- c3 chart js -->
-    <script src="~/bower_components/d3/js/d3.min.js"></script>
-    <script src="~/bower_components/c3/js/c3.js"></script>
-    <!-- Chart js -->
-    <script type="text/javascript" src="~/bower_components/chart.js/js/Chart.js"></script>
-    <!-- i18next.min.js -->
-    <script type="text/javascript" src="~/bower_components/i18next/js/i18next.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
-    <script type="text/javascript" src="~/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
     <!-- Custom js -->
     @*<script type="text/javascript" src="~/assets/pages/dashboard/project-dashboard.js"></script>*@
     <script src="~/assets/pages/data-table/js/data-table-custom.js"></script>
@@ -525,7 +535,7 @@
     <script src="~/assets/pages/form-masking/form-mask.js"></script>
 
 
-    <script type="text/javascript" src="~/assets/js/SmoothScroll.js"></script>
+    @*<script type="text/javascript" src="~/assets/js/SmoothScroll.js"></script>*@
     <script src="~/assets/js/pcoded.min.js"></script>
     <script src="~/assets/js/demo-12.js"></script>
     <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -538,6 +548,7 @@
     <script src="~/js/aluno.js" asp-append-version="true"></script>
     <script src="~/js/diagnostico.js" asp-append-version="true"></script>
     <script src="~/js/modalidade.js" asp-append-version="true"></script>
+    <script src="~/js/avaliacao.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 
 </body>

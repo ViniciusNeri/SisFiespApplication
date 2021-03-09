@@ -1,0 +1,63 @@
+﻿<div class="col-sm-12">
+    <input type="hidden" id="codigoAvaliacao" value="@ViewData["codigoAvaliacao"].ToString()" />
+    <div class="card">
+        <div class="card-header">
+            <h5>Histórico do aluno</h5>
+        </div>
+        <input style="position: absolute;top: 22px;right: 20px;" type="button" data-toggle="modal" data-target="#large-Modal" onclick="limparCampos()" value="Novo" class="btn btn-success" />
+        <div class="card-block">
+            <div class="main-timeline">
+                <div class="cd-timeline cd-container">
+                    @if (ViewData["ListaAvaliacaoDetalhe"] as IEnumerable<AvaliacaoDetalhe> != null)
+                    {
+                        foreach (var avaliacaoDetalhe in ViewData["ListaAvaliacaoDetalhe"] as IEnumerable<AvaliacaoDetalhe>)
+                        {
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-icon bg-primary">
+                                    <i class="icofont icofont-ui-file"></i>
+                                </div>
+                                <div class="cd-timeline-content card_main">
+                                    <a data-toggle="modal" data-target="#large-Modal" onclick="buscarDadosDetalhe(@avaliacaoDetalhe.Codigo)">
+                                        <img src="~/assets/images/timeline/timeline1.jfif" class="img-fluid width-100" alt="">
+                                    </a><div class="p-20">
+                                        <a data-toggle="modal" data-target="#large-Modal">
+                                            <h6>Procedimento - @avaliacaoDetalhe.Procedimento</h6>
+                                        </a><div class="timeline-details">
+                                            <a data-toggle="modal" data-target="#large-Modal">
+                                            </a><a href="#"> <i class="icofont icofont-ui-calendar"></i><span>@avaliacaoDetalhe.DtCadastro</span> </a>
+                                            <a href="#">
+                                                <i class="icofont icofont-ui-user"></i><span>@avaliacaoDetalhe.EspecialistaNome</span>
+                                            </a>
+                                            <p class="m-t-20"></p>
+                                        </div>
+                                    </div>
+                                    <span class="cd-date">@avaliacaoDetalhe.DtCadastro</span>
+                                    <span class="cd-details">Alteração Avaliação do aluno</span>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    
+
+                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+
+                                <div id="modaldetalheAvaliacao"></div>
+                                <script>
+                        $.get('@Url.Action("PartialDetalheAvaliacao", "Avaliacoes")', { id: 0 }, function (content) {
+                            $("#modaldetalheAvaliacao").html(content);
+                        });
+                                </script>
+                            </div>
+
+                            <!-- cd-timeline-block -->
+                            <!-- cd-timeline -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

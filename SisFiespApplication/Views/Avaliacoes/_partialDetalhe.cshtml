@@ -1,0 +1,80 @@
+﻿
+@{
+    int avaliacaodetalhecodigo = 0;
+    string procedimento = "";
+    string envolvidos = "";
+    string descAcao = "";
+    string conduta = "";
+    string nomeAluno = "";
+
+    @foreach (var avaliacaoDetalhe in ViewData["ListaDetalhe"] as IEnumerable<AvaliacaoDetalhe>)
+    {
+        avaliacaodetalhecodigo = avaliacaoDetalhe.Codigo;
+        procedimento = avaliacaoDetalhe.Procedimento;
+        envolvidos = avaliacaoDetalhe.Envolvidos;
+        descAcao = avaliacaoDetalhe.DescAcao;
+        conduta = avaliacaoDetalhe.Conduta;
+        nomeAluno = avaliacaoDetalhe.NomeAluno;
+
+    }
+
+    <input type="hidden" value="@avaliacaodetalhecodigo" id="avaliacaoDetalheCodigo">
+
+    <div class="modal-header">
+        <h4 class="modal-title">@nomeAluno</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="sub-title">Procedimento</h4>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea id="dadosProcedimento" class="form-control max-textarea" maxlength="3000" cols="80" rows="3">@procedimento</textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="sub-title">Envolvidos</h4>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea id="dadosEnvolvidos" class="form-control max-textarea" maxlength="3000" cols="80" rows="3">@envolvidos</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="sub-title">Descrição da ação</h4>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea id="dadosDescAcao" class="form-control max-textarea" maxlength="3000" cols="80" rows="3">@descAcao</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="sub-title">Conduta</h4>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <textarea id="dadosConduta" class="form-control max-textarea" maxlength="3000" cols="80" rows="3">@conduta</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary waves-effect waves-light " data-dismiss="modal" onclick="salvarAvaliacaoDetalhe()">Salvar</button>
+    </div>
+
+}

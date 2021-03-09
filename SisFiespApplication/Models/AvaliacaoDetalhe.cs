@@ -21,9 +21,16 @@ namespace SisFiespApplication.Models
 		[Column("AvaliacaoCodigo")]
 		public int AvaliacaoCodigo { get; set; }
 
+		[Display(Name = "TpAvaliacaoDetalhe")]
+		[Column("TpAvaliacaoDetalhe")]
+		public int TpAvaliacaoDetalhe { get; set; }
+
 		[Display(Name = "Data Cadastro")]
 		[Column("DtCadastro")]
 		public string DtCadastro { get; set; }
+
+		[NotMapped]
+		public string EspecialistaNome { get; set; }
 
 		[Display(Name = "Procedimento")]
 		[Column("Procedimento")]
@@ -40,5 +47,8 @@ namespace SisFiespApplication.Models
 		[Display(Name = "DescAcao")]
 		[Column("DescAcao")]
 		public string DescAcao { get; set; }
+
+		[NotMapped]
+		public string NomeAluno { get; set; }
 	}
 }
