@@ -41,13 +41,14 @@
     <!-- C3 chart -->
     <link rel="stylesheet" href="~/arquivos/c3/css/c3.css" type="text/css" media="all">
     <!-- Switch component css -->
-    <link rel="stylesheet" type="text/css" href="../arquivos/switchery/css/switchery.min.css">
+    <link rel="stylesheet" type="text/css" href="~/arquivos/switchery/css/switchery.min.css">
     <!-- Tags css -->
-    <link rel="stylesheet" type="text/css" href="../arquivos/bootstrap-tagsinput/css/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="~/arquivos/bootstrap-tagsinput/css/bootstrap-tagsinput.css" />
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
 
     <link rel="stylesheet" type="text/css" href="~/assets/css/jquery.mCustomScrollbar.css">
+
 
     <!-- Data Table Css -->
     <link rel="stylesheet" type="text/css" href="~/arquivos/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
@@ -92,6 +93,37 @@
     <script type="text/javascript" src="~/arquivos/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
     <script type="text/javascript" src="~/arquivos/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="~/arquivos/jquery-i18next/js/jquery-i18next.min.js"></script>
+
+
+    <script src="~/assets/pages/data-table/js/data-table-custom.js"></script>
+
+    <!-- data-table js -->
+    <script src="~/arquivos/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/arquivos/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets/pages/data-table/js/jszip.min.js"></script>
+    <script src="~/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script src="~/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script src="~/arquivos/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/arquivos/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/arquivos/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/arquivos/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/arquivos/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Masking js -->
+    <script src="~/assets/pages/form-masking/inputmask.js"></script>
+    <script src="~/assets/pages/form-masking/jquery.inputmask.js"></script>
+    <script src="~/assets/pages/form-masking/autoNumeric.js"></script>
+    <script src="~/assets/pages/form-masking/form-mask.js"></script>
+
+
+    @*<script type="text/javascript" src="~/assets/js/SmoothScroll.js"></script>*@
+    <script src="~/assets/js/pcoded.min.js"></script>
+    <script src="~/assets/js/demo-12.js"></script>
+    <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @*<script type="text/javascript" src="assets/pages/dashboard/project-dashboard.js"></script>*@
     <!-- Max-length js -->
     <script type="text/javascript" src="~/arquivos/bootstrap-maxlength/js/bootstrap-maxlength.js"></script>
 
@@ -197,15 +229,15 @@
                                 <ul class="show-notification profile-notification">
                                     <li>
                                         <a href="#!">
-                                            <i class="ti-settings"></i> Settings
+                                            <i class="ti-settings"></i> Configurações
                                         </a>
                                     </li>
                                     <li>
                                         <a href="user-profile.html">
-                                            <i class="ti-user"></i> Profile
+                                            <i class="ti-user"></i> Perfil
                                         </a>
                                     </li>
-                                    <li>
+                                    @*<li>
                                         <a href="email-inbox.html">
                                             <i class="ti-email"></i> My Messages
                                         </a>
@@ -214,10 +246,10 @@
                                         <a href="auth-lock-screen.html">
                                             <i class="ti-lock"></i> Lock Screen
                                         </a>
-                                    </li>
+                                    </li>*@
                                     <li>
                                         <a asp-action="Logout" asp-controller="Login">
-                                            <i class="ti-layout-sidebar-left"></i> Logout
+                                            <i class="ti-layout-sidebar-left"></i> Sair
                                         </a>
                                     </li>
                                 </ul>
@@ -494,7 +526,7 @@
                                     </ul>
                                 </li>
                                 <li class="">    <a asp-area="" asp-controller="Avaliacoes" asp-action="Index" id="menuAvaliacao">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Avaliações</span>        <span class="pcoded-mcaret"></span>    </a></li>
-                                <li class="">    <a href="avaliacao.html">        <span class="pcoded-micon"><i class="icofont icofont-paper"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Relatórios</span>        <span class="pcoded-mcaret"></span>    </a></li>
+                                <li class="">    <a href="retalorio.html">        <span class="pcoded-micon"><i class="icofont icofont-file-alt"></i><b>N</b></span>        <span class="pcoded-mtext" data-i18n="nav.navigate.main">Relatórios</span>        <span class="pcoded-mcaret"></span>    </a></li>
 
                             </ul>
                         </div>
@@ -511,38 +543,10 @@
         </div>
     </div>
     <!-- Warning Section Ends -->
-
     <!-- Custom js -->
-    @*<script type="text/javascript" src="~/assets/pages/dashboard/project-dashboard.js"></script>*@
-    <script src="~/assets/pages/data-table/js/data-table-custom.js"></script>
-
-    <!-- data-table js -->
-    <script src="~/arquivos/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="~/arquivos/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/assets/pages/data-table/js/jszip.min.js"></script>
-    <script src="~/assets/pages/data-table/js/pdfmake.min.js"></script>
-    <script src="~/assets/pages/data-table/js/vfs_fonts.js"></script>
-    <script src="~/arquivos/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="~/arquivos/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/arquivos/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/arquivos/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/arquivos/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
-    <!-- Masking js -->
-    <script src="~/assets/pages/form-masking/inputmask.js"></script>
-    <script src="~/assets/pages/form-masking/jquery.inputmask.js"></script>
-    <script src="~/assets/pages/form-masking/autoNumeric.js"></script>
-    <script src="~/assets/pages/form-masking/form-mask.js"></script>
 
 
-    @*<script type="text/javascript" src="~/assets/js/SmoothScroll.js"></script>*@
-    <script src="~/assets/js/pcoded.min.js"></script>
-    <script src="~/assets/js/demo-12.js"></script>
-    <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="~/assets/js/script.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script src="~/jsView/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/jsView/usuario.js" asp-append-version="true"></script>
     <script src="~/jsView/escola.js" asp-append-version="true"></script>
     <script src="~/jsView/aluno.js" asp-append-version="true"></script>

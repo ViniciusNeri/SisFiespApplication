@@ -3,7 +3,301 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="page-wrapper">
+
+    <div class="page-body">
+        <div class="row">
+
+            <!-- In Design Start -->
+            <div class="col-sm-4">
+                <div class="card bg-c-pink text-white widget-visitor-card">
+                    <div class="card-block-small text-center">
+                        <h2>12</h2>
+                        <h6>Avaliações Pendentes</h6>
+                        <i class="ti-user"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-c-blue text-white widget-visitor-card">
+                    <div class="card-block-small text-center">
+                        <h2>36</h2>
+                        <h6>Avaliações Concluidas</h6>
+                        <i class="icofont icofont-paper"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-c-yellow text-white widget-visitor-card">
+                    <div class="card-block-small text-center">
+                        <h2>4</h2>
+                        <h6>Avaliações Pendentes de retorno</h6>
+                        <i class="icofont icofont-ui-alarm"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- In Design End -->
+            <!-- Statestics Start -->
+            <div class="col-md-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Statistics</h5>
+                        <div class="card-header-left ">
+                        </div>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="icofont icofont-simple-left "></i></li>
+                                <li><i class="icofont icofont-maximize full-card"></i></li>
+                                <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                <li><i class="icofont icofont-error close-card"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="line-example">
+                                    <div id="statestics-chart" style="height: 300px; overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left; width: 660px; height: 300px; padding: 0px; cursor: default; touch-action: auto;"><svg version="1.1" style="position: absolute; width: 660px; height: 300px; top: -0.203125px; left: -0.203125px;"><desc>JavaScript chart by amCharts 3.21.5</desc><g><path cs="100,100" d="M0.5,0.5 L659.5,0.5 L659.5,299.5 L0.5,299.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path><path cs="100,100" d="M0.5,0.5 L545.5,0.5 L545.5,264.5 L0.5,264.5 L0.5,0.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0" transform="translate(34,0)"></path></g><g><g transform="translate(34,0)"></g><g transform="translate(34,0)" visibility="visible"><g><path cs="100,100" d="M0.5,264.5 L0.5,264.5 L545.5,264.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,220.5 L0.5,220.5 L545.5,220.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,176.5 L0.5,176.5 L545.5,176.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,132.5 L0.5,132.5 L545.5,132.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,88.5 L0.5,88.5 L545.5,88.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,44.5 L0.5,44.5 L545.5,44.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,0.5 L545.5,0.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.1" stroke="#000000"></path></g></g></g><g transform="translate(34,0)" clip-path="url(#AmChartsEl-3)"><g visibility="hidden"><g transform="translate(152,0)" visibility="hidden"><rect x="0.5" y="0.5" width="61" height="264" rx="0" ry="0" stroke-width="0" fill="#FC6180" stroke="#FC6180" fill-opacity="0" stroke-opacity="0" transform="translate(-31,0)"></rect></g></g></g><g></g><g></g><g></g><g><g transform="translate(34,0)"><g clip-path="url(#AmChartsEl-6)"><path cs="100,100" d="M30,221 C45,219,61,182,91,182 C121,182,121,221,151,221 C181,222,182,191,212,192 C243,193,243,249,273,246 C303,244,303,147,333,136 C363,126,364,31,394,35 C424,40,424,225,454,230 C484,235,500,133,515,128 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="2" stroke-opacity="1" stroke="#4680ff"></path></g><g clip-path="url(#AmChartsEl-5)"><path cs="100,100" d="M30,221 C45,219,61,182,91,182 C121,182,121,221,151,221 C181,222,182,191,212,192 C243,193,243,249,273,246 C303,244,303,147,333,136 C363,126,364,31,394,35 C424,40,424,225,454,230 C484,235,500,133,515,128 M0,0 L0,0" fill="none" fill-opacity="0" stroke-width="2" stroke-opacity="1" stroke="#4680ff"></path></g><clipPath id="AmChartsEl-5"><rect x="0" y="0" width="545" height="264" rx="0" ry="0" stroke-width="0"></rect></clipPath><clipPath id="AmChartsEl-6"><rect x="0" y="264" width="545" height="1" rx="0" ry="0" stroke-width="0"></rect></clipPath><g></g></g></g><g></g><g><path cs="100,100" d="M0.5,264.5 L545.5,264.5 L545.5,264.5" fill="none" stroke-width="1" stroke-dasharray="6" stroke-opacity="0.2" stroke="#000000" transform="translate(34,0)"></path><g><path cs="100,100" d="M0.5,0.5 L545.5,0.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(34,264)"></path></g><g><path cs="100,100" d="M0.5,0.5 L0.5,264.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000" transform="translate(34,0)" visibility="visible"></path></g></g><g><g transform="translate(34,0)" clip-path="url(#AmChartsEl-4)" style="pointer-events: none;"><path cs="100,100" d="M0.5,0.5 L545.5,0.5 L545.5,0.5" fill="none" stroke-width="1" stroke-opacity="false" stroke="#FC6180" visibility="hidden" transform="translate(0,1)"></path></g><clipPath id="AmChartsEl-4"><rect x="0" y="0" width="545" height="264" rx="0" ry="0" stroke-width="0"></rect></clipPath></g><g></g><g><g transform="translate(34,0)"><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(30,221)" aria-label=" Jan 0.98"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(91,182) scale(1)" aria-label=" Feb 1.87"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(151,221) scale(1)" aria-label=" Mar 0.97"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(212,192)" aria-label=" Apr 1.64"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(273,246)" aria-label=" May 0.4"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(333,136)" aria-label=" Jun 2.9"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(394,35)" aria-label=" Jul 5.2"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(454,230)" aria-label=" Aug 0.77"></circle><circle r="4.5" cx="0" cy="0" fill="#4680ff" stroke="#4680ff" fill-opacity="1" stroke-width="2" stroke-opacity="0" transform="translate(515,128)" aria-label=" Sap 3.1"></circle></g></g><g><g></g></g><g><g transform="translate(34,0)" visibility="visible"><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(30,281.5)"><tspan y="6" x="0">Jan</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(91,281.5)"><tspan y="6" x="0">Feb</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(151,281.5)"><tspan y="6" x="0">Mar</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(212,281.5)"><tspan y="6" x="0">Apr</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(273,281.5)"><tspan y="6" x="0">May</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(333,281.5)"><tspan y="6" x="0">Jun</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(394,281.5)"><tspan y="6" x="0">Jul</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(454,281.5)"><tspan y="6" x="0">Aug</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="middle" transform="translate(515,281.5)"><tspan y="6" x="0">Sap</tspan></text></g><g transform="translate(34,0)" visibility="visible"><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,263)"><tspan y="6" x="0">0</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,219)"><tspan y="6" x="0">1</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,175)"><tspan y="6" x="0">2</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,131)"><tspan y="6" x="0">3</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,87)"><tspan y="6" x="0">4</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,43)"><tspan y="6" x="0">5</tspan></text><text y="6" fill="#000000" font-family="Verdana" font-size="11px" opacity="1" text-anchor="end" transform="translate(-12,-1)"><tspan y="6" x="0">6</tspan></text></g></g><g></g><g transform="translate(34,0)"></g><g></g><g></g><clipPath id="AmChartsEl-3"><rect x="-1" y="-1" width="547" height="266" rx="0" ry="0" stroke-width="0"></rect></clipPath></svg></div></div></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div id="invoice" style="height: 300px; overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left; width: 300px; height: 300px; padding: 0px; touch-action: auto;"><svg version="1.1" style="position: absolute; width: 300px; height: 300px; top: -0.203125px; left: -0.265625px;"><desc>JavaScript chart by amCharts 3.21.5</desc><g><path cs="100,100" d="M0.5,0.5 L299.5,0.5 L299.5,299.5 L0.5,299.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path></g><g></g><g></g><g></g><g></g><g></g><g><g opacity="1" aria-label="Australia: 6.90% 39 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M131.08933048868005,109.16635482064288 L112.17866097736011,68.33270964128577 A90,90,0,0,1,149.99999999999997,60 L150,105 A45,45,0,0,0,131.08933048868005,109.16635482064288 Z" fill="#FFB64D" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g><g opacity="1" aria-label="Germany: 11.50% 65 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M108.806086237278,131.8875327768572 L67.61217247455599,113.7750655537144 A90,90,0,0,1,112.17866097736011,68.33270964128577 L131.08933048868005,109.16635482064288 A45,45,0,0,0,108.806086237278,131.8875327768572 Z" fill="#FC6180" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g><g opacity="1" aria-label="Lithuania: 46.02% 260 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M150,105 L150,60 A90,90,0,0,1,172.2851342773257,237.19732100381043 L161.14256713866286,193.59866050190521 A45,45,0,0,0,150,105 Z" fill="#93BE52" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g><g opacity="1" aria-label="Ireland: 35.58% 201 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M161.14256713866286,193.59866050190521 L172.2851342773257,237.19732100381043 A90,90,0,0,1,67.61217247455599,113.7750655537144 L108.806086237278,131.8875327768572 A45,45,0,0,0,161.14256713866286,193.59866050190521 Z" fill="#4680ff" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g></g><g></g><g></g><g></g><g></g><g></g><g><g></g></g><g></g><g></g><g></g><g></g><g></g><g visibility="hidden"></g><g visibility="hidden"></g><g visibility="hidden"></g><g visibility="hidden"></g></svg></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Statestics End -->
+            <!-- Client Map Start -->
+            <div class="col-md-12 col-xl-8 ">
+                <div class="card">
+                    <div class="card-block user-detail-card">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                <div class="contact-icon">
+                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 user-detail">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Name :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30">Gregory Durk</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Date of brith :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30">24 October 2017</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-email"></i>Email Id :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30"><a href="mailto:dummy@example.com">techdemo@example.com</a></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-home"></i>Address :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30">23/Encrypt square, Melbourn, Australia</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-touch-phone"></i>Phone :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30">+(345)234-5287</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-web"></i>Website :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30"><a href="#!">http://www.demotheme.com</a></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-fax"></i>Fax :</h6>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <h6 class="m-b-30">+(723)542-2823</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Client Map Start -->
+                    <div class="col-md-6">
+                        <div class="card client-map">
+                            <div class="card-block">
+                                <div class="client-detail">
+                                    <div class="client-profile">
+                                        <img src="assets/images/avatar-1.jpg" alt="">
+                                    </div>
+                                    <div class="client-contain">
+                                        <h5>Gregory Johnes</h5>
+                                        <a href="#!" class="text-muted">gregory@demo.com</a>
+                                        <p class="text-muted m-0 p-t-10">Product Manager</p>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="client-card-box">
+                                        <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                        <div class="row">
+                                            <div class="col-6 text-center client-border p-10">
+                                                <p class="text-muted m-0">Invites</p>
+                                                <span class="text-c-blue f-20 f-w-400">345</span>
+                                            </div>
+                                            <div class="col-6 text-center p-10">
+                                                <p class="text-muted m-0">Pending</p>
+                                                <span class="text-c-blue f-20 f-w-400">12</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 client-border-card p-t-10">
+                                            <p>Overall Activity</p>
+                                        </div>
+                                        <canvas id="client-map-1" class="client-map-chart" height="63" width="272" style="display: block; width: 272px; height: 63px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card client-map">
+                            <div class="card-block">
+                                <div class="client-detail">
+                                    <div class="client-profile">
+                                        <img src="assets/images/avatar-5.jpg" alt="">
+                                    </div>
+                                    <div class="client-contain">
+                                        <h5>Gregory Johnes</h5>
+                                        <a href="#!" class="text-muted">gregory@demo.com</a>
+                                        <p class="text-muted m-0 p-t-10">Product Manager</p>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="client-card-box">
+                                        <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                        <div class="row">
+                                            <div class="col-6 text-center client-border p-10">
+                                                <p class="text-muted m-0">Invites</p>
+                                                <span class="text-c-green f-20 f-w-400">812</span>
+                                            </div>
+                                            <div class="col-6 text-center p-10">
+                                                <p class="text-muted m-0">Pending</p>
+                                                <span class="text-c-green f-20 f-w-400">00</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 client-border-card p-t-10">
+                                            <p>Overall Activity</p>
+                                        </div>
+                                        <canvas id="client-map-3" class="client-map-chart" height="63" width="272" style="display: block; width: 272px; height: 63px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Client Map End -->
+                </div>
+            </div>
+            <!-- Project overview Start -->
+            <div class="col-md-12 col-xl-4">
+                <div class="card card-overview ">
+                    <div class="card-header ">
+                        <div class="card-header-left ">
+                            <h5>Project overview</h5>
+                        </div>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="icofont icofont-simple-left "></i></li>
+                                <li><i class="icofont icofont-maximize full-card"></i></li>
+                                <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                <li><i class="icofont icofont-error close-card"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="m-b-50">
+                            <div class="row justify-content-md-center">
+                                <div class="col-sm-12">
+                                    <div id="project-overview-chart" class="project-overview-chart" style="height: 200px; overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left; width: 274px; height: 200px; padding: 0px; touch-action: auto;"><svg version="1.1" style="position: absolute; width: 274px; height: 200px; top: -0.203125px; left: 0.390625px;"><desc>JavaScript chart by amCharts 3.21.5</desc><g><path cs="100,100" d="M0.5,0.5 L273.5,0.5 L273.5,199.5 L0.5,199.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path></g><g></g><g></g><g></g><g></g><g></g><g><g opacity="1" aria-label="Project Sold: 12.79% 39 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M137,100 L65.02628067796434,30.575337761334183 A100,100,0,0,1,136.99999999999997,0 L137,100 Z" fill="#FFB64D" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g><g opacity="1" aria-label="Project Returned: 21.31% 65 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M137,100 L52.899968503018385,154.1034629409865 A100,100,0,0,1,65.02628067796434,30.575337761334183 L137,100 Z" fill="#FC6180" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g><g opacity="1" aria-label="Project Processed: 65.90% 201 " visibility="visible" transform="translate(0,0)"><path cs="1000,1000" d=" M137,100 L137,0 A100,100,0,1,1,52.899968503018385,154.1034629409865 L137,100 Z" fill="#4680ff" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9" fill-opacity="1"></path></g></g><g></g><g></g><g></g><g></g><g></g><g><g></g></g><g></g><g></g><g></g><g></g><g></g><g visibility="hidden"></g><g visibility="hidden"></g><g visibility="hidden"></g></svg></div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-20 p-b-20 ">
+                            <div class="row ">
+                                <div class="col-sm-6 ">
+                                    <span class="bg-c-blue "></span>
+                                    <h6 class="m-l-30 f-w-600 m-b-5 ">23.89%</h6>
+                                    <p class="text-muted m-l-30 m-b-0 ">
+                                        Project
+                                        Processed
+                                    </p>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                    <canvas id="project-over-sub-1" height="49" width="122" style="display: block; width: 122px; height: 49px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-t-default p-t-20 p-b-20 ">
+                            <div class="row ">
+                                <div class="col-sm-6 ">
+                                    <span class="bg-c-pink "></span>
+                                    <h6 class="m-l-30 f-w-600 m-b-5 ">17.78%</h6>
+                                    <p class="text-muted m-l-30 m-b-0 ">Project Returned</p>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                    <canvas id="project-over-sub-2" height="49" width="122" style="display: block; width: 122px; height: 49px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-t-default p-t-20 p-b-20 ">
+                            <div class="row ">
+                                <div class="col-sm-6 ">
+                                    <span class="bg-c-yellow "></span>
+                                    <h6 class="m-l-30 f-w-600 m-b-5 ">10.56%</h6>
+                                    <p class="text-muted m-l-30 m-b-0 ">Project Sold</p>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                    <canvas id="project-over-sub-3" height="49" width="122" style="display: block; width: 122px; height: 49px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+<script type="text/javascript" src="~/assets/pages/dashboard/project-dashboard.js"></script>
+
+

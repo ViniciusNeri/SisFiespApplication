@@ -1,28 +1,29 @@
 'use strict';
+//teste
 
 $(document).ready(function() {
 
     widgetChart();
 
     function widgetChart() {
-        var ctx = document.getElementById('design-graph-1').getContext("2d");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: buildstackchartjs('#fff', [45, 25, 35, 20, 45, 20, 40, 10, 30, 45]),
-            options: buildchartoption(),
-        });
-        var ctx = document.getElementById('design-graph-2').getContext("2d");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: buildstackchartjs('#fff', [10, 25, 35, 20, 10, 20, 15, 45, 15, 10]),
-            options: buildchartoption(),
-        });
-        var ctx = document.getElementById('design-graph-3').getContext("2d");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: buildstackchartjs('#fff', [66, 60, 50, 55, 20, 55, 10, 35, 15, 25]),
-            options: buildchartoption(),
-        });
+        //var ctx = document.getElementById('design-graph-1').getContext("2d");
+        //var myChart = new Chart(ctx, {
+        //    type: 'line',
+        //    data: buildstackchartjs('#fff', [45, 25, 35, 20, 45, 20, 40, 10, 30, 45]),
+        //    options: buildchartoption(),
+        //});
+        //var ctx = document.getElementById('design-graph-2').getContext("2d");
+        //var myChart = new Chart(ctx, {
+        //    type: 'line',
+        //    data: buildstackchartjs('#fff', [10, 25, 35, 20, 10, 20, 15, 45, 15, 10]),
+        //    options: buildchartoption(),
+        //});
+        //var ctx = document.getElementById('design-graph-3').getContext("2d");
+        //var myChart = new Chart(ctx, {
+        //    type: 'line',
+        //    data: buildstackchartjs('#fff', [66, 60, 50, 55, 20, 55, 10, 35, 15, 25]),
+        //    options: buildchartoption(),
+        //});
         var ctx = document.getElementById('client-map-1').getContext("2d");
         var myChart = new Chart(ctx, {
             type: 'line',
