@@ -75,5 +75,30 @@ namespace SisFiespApplication.Models
 		[Display(Name = "Observacao")]
 		[Column("Observacao")]
 		public string Observacao { get; set; }
+
+		[NotMapped]
+		public string ModalidadeAluno { get; set; }
+
+		[NotMapped]
+		public string DiagnoscoAluno { get; set; }
+
+		[NotMapped]
+		public string NueEscolaAluno { get; set; }
+		[NotMapped]
+		public string TelefoneEscolaAluno { get; set; }
+		[NotMapped]
+		public string Telefone2EscolaAluno { get; set; }
+		[NotMapped]
+		public string BairroEscolaAluno { get; set; }
+		[NotMapped]
+		public string CidadeEscolaAluno { get; set; }
+		[NotMapped]
+		public string DiretorEscolaAluno { get; set; }
+		[NotMapped]
+		public string CP1EscolaAluno { get; set; }
+		[NotMapped]
+		public string CP2EscolaAluno { get; set; }
+		[NotMapped]
+		public string EspecialistaAluno { get; set; }
 	}
 }

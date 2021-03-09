@@ -4,9 +4,6 @@
     ViewData["Title"] = "Nova Avaliacao";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
 <div class="page-wrapper" id="pagina">
     <!-- Page-header start -->
     <div class="page-header card">
@@ -63,19 +60,28 @@
                             </div>
                             <div class="col-sm-12 col-xl-3 m-b-30">
                                 <h4 class="sub-title">Especialista</h4>
-                                <select name="UsuarioCodigo" id="UsuarioCodigo" class="form-control form-control-primary">
+                                <select name="usuarioCodigo" id="usuarioCodigo" class="form-control form-control-primary">
                                     <option value="">  </option>
                                     @if (ViewData["Usuarios"] as IEnumerable<Usuario> != null)
                                     {
                                         foreach (var Usuario in ViewData["Usuarios"] as IEnumerable<Usuario>)
                                         {
-                                            <option value="@Usuario.Codigo">@Usuario.Nome</option>
+                                            if (Usuario.Nome.Equals(@ViewData["Usuario"]))
+                                            {
+                                                <option selected="selected" value="@Usuario.Codigo">@Usuario.Nome</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@Usuario.Codigo">@Usuario.Nome</option>
+                                            }
+
                                         }
                                     }
                                 </select>
                             </div>
                         </div>
-                        <input style="position: absolute;top: 63px;right: 406px;" type="button" onclick="salvarAluno()" value="Salvar" class="btn btn-primary" />
+                        <input id="btSalvar" style="position: absolute;top: 63px;right: 406px;" type="button" onclick="salvarAvaliacao()" value="Salvar" class="btn btn-primary" />
+                        <input id="btVoltar" style="position: absolute;top: 63px;right: 406px; display:none;" type="button" onclick="location.href='@Url.Action("Index", "Avaliacoes")'" value="Voltar" class="btn btn-danger" />
                     </div>
                     <div class="card-block tab-icon" id="dados" style="height:530px;display:none">
                         <!-- Row start -->
@@ -94,7 +100,7 @@
                                         <div class="slide"></div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#messages7" role="tab"><i class="icofont icofont-ui-message"></i>Observações</a>
+                                        <a class="nav-link" data-toggle="tab" href="#messages7" role="tab"><i class="icofont icofont-fountain-pen"></i>Observações</a>
                                         <div class="slide"></div>
                                     </li>
                                     <li class="nav-item">
@@ -106,7 +112,7 @@
                                 <div class="tab-content card-block">
                                     <div class="tab-pane active" id="home7" role="tabpanel">
                                         <div class="card">
-                                            <div class="card-block user-detail-card" style="height:370px;">
+                                            <div class="card-block user-detail-card" style="height:410px;">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
@@ -190,7 +196,7 @@
                                     </div>
                                     <div class="tab-pane" id="profile7" role="tabpanel">
                                         <div class="card">
-                                            <div class="card-block user-detail-card" style="height:370px;">
+                                            <div class="card-block user-detail-card" style="height: 410px;">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
@@ -204,7 +210,7 @@
                                                     <div class="col-sm-8 user-detail">
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Nº UE :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-numbered"></i>Nº UE :</h6>
                                                             </div>
                                                             <div id="nueEscola" class="col-sm-7">
 
@@ -212,7 +218,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Escola :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-book-alt"></i>Escola :</h6>
                                                             </div>
                                                             <div id="nomeEscola" class="col-sm-7">
 
@@ -220,7 +226,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Telefone :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-cell-phone"></i>Telefone :</h6>
                                                             </div>
                                                             <div id="telefoneEscola" class="col-sm-7">
 
@@ -228,7 +234,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Telefone 2 :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-call"></i>Telefone 2 :</h6>
                                                             </div>
                                                             <div id="telefone2Escola" class="col-sm-7">
 
@@ -236,7 +242,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Cidade :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-globe-alt"></i>Cidade :</h6>
                                                             </div>
                                                             <div id="cidadeEscola" class="col-sm-7">
 
@@ -244,7 +250,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Bairro :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-map"></i>Bairro :</h6>
                                                             </div>
                                                             <div id="bairroEscola" class="col-sm-7">
 
@@ -252,7 +258,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Diretor(a) :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-user"></i>Diretor(a) :</h6>
                                                             </div>
                                                             <div id="diretorEscola" class="col-sm-7">
 
@@ -260,7 +266,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>CP 1 :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-user"></i>CP 1 :</h6>
                                                             </div>
                                                             <div id="cp1Escola" class="col-sm-7">
 
@@ -268,7 +274,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-5">
-                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>CP 2 :</h6>
+                                                                <h6 class="f-w-400 m-b-30"><i class="icofont icofont-user"></i>CP 2 :</h6>
                                                             </div>
                                                             <div id="cp2Escola" class="col-sm-7">
 
@@ -281,7 +287,7 @@
                                     </div>
                                     <div class="tab-pane" id="messages7" role="tabpanel">
                                         <div class="card">
-                                            <div class="card-block user-detail-card" style="height:370px;">
+                                            <div class="card-block user-detail-card" style="height:410px;">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
@@ -306,7 +312,7 @@
                                     </div>
                                     <div class="tab-pane" id="settings7" role="tabpanel">
                                         <div class="card">
-                                            <div class="card-block user-detail-card" style="height:370px;">
+                                            <div class="card-block user-detail-card" style="height:410px;">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
@@ -339,66 +345,12 @@
                 <!-- Tab variant tab card start -->
             </div>
         </div>
+
+        <div class="row" id="detalheAvaliacao" style="display: none;"></div>
+        <script>
+                $.get('@Url.Action("PartialAvaliacao", "Avaliacoes")', { id: 0 }, function (content) {
+                    $("#detalheAvaliacao").html(content);
+                });
+         </script>
     </div>
 </div>
-
-<script>
-    function buscarDados() {
-
-        if ($("#alunoCodigo").val() == "") {
-            $("#dados").attr("style", "display:none")
-        } else {
-
-            var dados = "";
-
-            if ($('#alunoCodigo').val() != "") {
-                dados += '{name:"alunoCodigo", value:"' + $('#alunoCodigo').val() + '"},';
-            }
-
-            dadosEnvio = eval("[" + dados + "]");
-
-
-            $.ajax({
-                url: "/Avaliacoes/DetalheAluno",
-                method: "GET",
-                data: dadosEnvio,
-                dataType: "json",
-                success: function (data) {                
-
-                    //Aluno
-                    $("#nomeAluno").html(" <h6 class=\"m - b - 30\">" + data.nomeAluno + "</h6>");
-                    $("#dtNascimentoAluno").html(" <h6 class=\"m - b - 30\">" + data.dataNascimentoAluno + "</h6>");
-                    $("#modalidadeAluno").html(" <h6 class=\"m - b - 30\">" + data.modalidadeAluno + "</h6>");
-                    $("#diagnosticoAluno").html(" <h6 class=\"m - b - 30\">" + data.diagnoscoAluno + "</h6>");
-                    $("#nomeMaeAluno").html(" <h6 class=\"m - b - 30\">" + data.nomeMae + "</h6>");
-                    $("#nomePaiAluno").html(" <h6 class=\"m - b - 30\">" + data.nomePai + "</h6>");
-                    $("#turnoAluno").html(" <h6 class=\"m - b - 30\">" + data.turnoAluno + "</h6>");
-                    $("#observacaoAluno").val(unescape(data.observacaoAluno));
-
-                    //Escola
-                    $("#nueEscola").html(" <h6 class=\"m - b - 30\">" + data.nueEscola + "</h6>");
-                    $("#nomeEscola").html(" <h6 class=\"m - b - 30\">" + data.nomeEscola + "</h6>");
-                    $("#telefoneEscola").html(" <h6 class=\"m - b - 30\">" + data.telefoneEscola + "</h6>");
-                    $("#telefone2Escola").html(" <h6 class=\"m - b - 30\">" + data.telefone2Escola + "</h6>");
-                    $("#cidadeEscola").html(" <h6 class=\"m - b - 30\">" + data.cidadeEscola + "</h6>");
-                    $("#bairroEscola").html(" <h6 class=\"m - b - 30\">" + data.bairroEscola + "</h6>");
-                    $("#diretorEscola").html(" <h6 class=\"m - b - 30\">" + data.diretorEscola + "</h6>");
-                    $("#cp1Escola").html(" <h6 class=\"m - b - 30\">" + data.cp1Escola + "</h6>");
-                    $("#cp2Escola").html(" <h6 class=\"m - b - 30\">" + data.cp2Escola + "</h6>");
-
-                    $("#dados").attr("style", "display:block");
-                },
-                error: function (data) {
-                    swal({
-                        title: "Erro ao cadastrar!",
-                        text: "Erro desconhecido!",
-                        icon: "error",
-                    });
-                }
-            });
-
-            
-        }
-    }
-
-</script>

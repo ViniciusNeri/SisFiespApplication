@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\aluno.js" />
+    <Content Remove="wwwroot\js\avaliacao.js" />
     <Content Remove="wwwroot\js\diagnostico.js" />
     <Content Remove="wwwroot\js\escola.js" />
     <Content Remove="wwwroot\js\modalidade.js" />
@@ -13,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\avaliacao.js" />
     <None Include="wwwroot\js\aluno.js" />
     <None Include="wwwroot\js\modalidade.js" />
     <None Include="wwwroot\js\diagnostico.js" />
