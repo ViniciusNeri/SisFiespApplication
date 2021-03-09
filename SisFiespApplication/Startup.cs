@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text.Unicode;
 using System.Threading.Tasks;
@@ -25,8 +26,9 @@ namespace SisFiespApplication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			//string stringConexao = "Server=localhost;DataBase=sisfiesp;Uid=root;Pwd=123456";
-			string stringConexao = "Server=mysql5036.site4now.net;DataBase=db_a70d3e_viniciu;Uid=a70d3e_viniciu;Pwd=sisfiesp123";
+			string stringConexao = Configuration.GetConnectionString("DefaultConnection");
+			//string stringConexao = Configuration.GetConnectionString("ProductionConnection");			
+
 			services.AddDbContext<Contexto>(options =>
 			options.UseMySQL(stringConexao));
 
@@ -65,6 +67,11 @@ namespace SisFiespApplication
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			IConfigurationRoot configuration = new ConfigurationBuilder()
+			.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+			.AddJsonFile("appsettings.json")
+			.Build();
 
 			app.UseEndpoints(endpoints =>
 			{
