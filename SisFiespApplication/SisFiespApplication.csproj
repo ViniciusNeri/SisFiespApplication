@@ -36,4 +36,9 @@
     <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\bower_components\" />
+    <Folder Include="wwwroot\arquivos\" />
+  </ItemGroup>
+
 </Project>

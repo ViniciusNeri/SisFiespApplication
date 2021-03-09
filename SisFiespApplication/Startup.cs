@@ -25,7 +25,8 @@ namespace SisFiespApplication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			string stringConexao = "Server=localhost;DataBase=sisfiesp;Uid=root;Pwd=123456";
+			//string stringConexao = "Server=localhost;DataBase=sisfiesp;Uid=root;Pwd=123456";
+			string stringConexao = "Server=mysql5036.site4now.net;DataBase=db_a70d3e_viniciu;Uid=a70d3e_viniciu;Pwd=sisfiesp123";
 			services.AddDbContext<Contexto>(options =>
 			options.UseMySQL(stringConexao));
 
