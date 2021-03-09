@@ -27,8 +27,8 @@ namespace SisFiespApplication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			string stringConexao = Configuration.GetConnectionString("DefaultConnection");
-			//string stringConexao = Configuration.GetConnectionString("ProductionConnection");			
+			//string stringConexao = Configuration.GetConnectionString("DefaultConnection");
+			string stringConexao = Configuration.GetConnectionString("ProductionConnection");			
 
 			services.AddDbContext<Contexto>(options =>
 			options.UseMySQL(stringConexao));
@@ -43,7 +43,7 @@ namespace SisFiespApplication
 
 			services.AddSession(options =>
 			{
-				options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+				options.IdleTimeout = TimeSpan.FromMinutes(90);//We set Time here 
 				options.Cookie.HttpOnly = true;
 				options.Cookie.IsEssential = true;
 			});
