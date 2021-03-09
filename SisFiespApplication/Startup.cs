@@ -6,6 +6,7 @@ using System.Text.Unicode;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +46,11 @@ namespace SisFiespApplication
 				options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
 				options.Cookie.HttpOnly = true;
 				options.Cookie.IsEssential = true;
+			});
+
+			services.Configure<FormOptions>(x =>
+			{
+				x.MultipartBodyLengthLimit = 1209715200;
 			});
 		}
 
