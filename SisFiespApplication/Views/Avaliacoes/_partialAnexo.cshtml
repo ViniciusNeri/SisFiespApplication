@@ -9,40 +9,54 @@
         <div class="col-sm-12">
             <h4 class="sub-title">Anexar Arquivo</h4>
             <div class="row">
-                <table>
 
-                    <tr>
-                        <th>
-                            Nome do arquivo
-                        </th>
-                        <th>
-                            Tamanho
-                        </th>
-                        <th>
-                            Tipo
-                        </th>
-                        <th></th>
-                    </tr>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Arquivos anexados</h5>
+                        <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+                    </div>
+                    <div class="card-block">
+                        <div class="table-responsive">
+                            <table class="table table-xs">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Nome do arquivo
+                                        </th>
+                                        <th>
+                                            Tamanho
+                                        </th>
+                                        <th>
+                                            Tipo
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in ViewData["ObjFiles"] as IEnumerable<Anexo>)
+                                        {
+                                    <tr>
+                                        <td>
+                                            @obj.File
+                                        </td>
+                                        <td>
+                                            @obj.Size
+                                        </td>
+                                        <td>
+                                            @obj.Type
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Baixar","Avaliacoes","Download", new { fileName = obj.File, codigo = obj.CodigoAvaliacaoDetalhe },new { @class = "btn btn-primary"})
 
-                    @foreach (var obj in ViewData["ObjFiles"] as IEnumerable<Anexo>)
-                    {
-                        <tr>
-                            <td>
-                                @obj.File
-                            </td>
-                            <td>
-                                @obj.Size
-                            </td>
-                            <td>
-                                @obj.Type
-                            </td>
-                            <td>
-                                @Html.ActionLink("Avaliacoes", "Download", new { fileName = obj.File , codigo = obj.CodigoAvaliacaoDetalhe })
-                            </td>
-                        </tr>
+                                        </td>
+                                    </tr>
 
-                    }
-                </table>
+                                        }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
@@ -85,3 +99,14 @@
     <button type="button" class="btn btn-default waves-effect " id="fecharModalFile" data-dismiss="modal">Fechar</button>
     @*<button type="button" class="btn btn-primary waves-effect waves-light " data-dismiss="modal" onclick="salvarAvaliacaoDetalhe()">Salvar</button>*@
 </div>
+
+<script src="~/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/assets/pages/data-table/js/jszip.min.js"></script>
+<script src="~/assets/pages/data-table/js/pdfmake.min.js"></script>
+<script src="~/assets/pages/data-table/js/vfs_fonts.js"></script>
+<script src="~/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="~/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="~/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>

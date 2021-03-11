@@ -421,7 +421,13 @@ async function AJAXSubmit(form) {
 		data: formData,
 		async: true,
 		success: function (data) {
-			//$("#fecharModalFile").click();
+			$("#fecharModalFile").click();
+
+			swal({
+				title: "Sucesso!",
+				text: "Arquivo anexado com sucesso.",
+				icon: "success",
+			});
 		},
 		cache: false,
 		contentType: false,

@@ -194,7 +194,20 @@
                                                                 <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-weather"></i>Turno :</h6>
                                                             </div>
                                                             <div id="turnoAluno" class="col-sm-7">
-                                                                @aluno.Turno
+
+                                                                @{ if (@aluno.Turno == 1)
+                                                                    {
+                                                                        @Html.Raw("Manhã");
+                                                                    }
+                                                                    else if (@aluno.Turno == 2)
+                                                                    {
+                                                                        @Html.Raw("Tarde");
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.Raw("Noite");
+                                                                    }
+                                                                }
                                                             </div>
                                                         </div>
 

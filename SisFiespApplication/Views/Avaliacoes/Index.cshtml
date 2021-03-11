@@ -77,7 +77,15 @@
                                                 @Html.DisplayFor(modelItem => item.DtCadastro)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Status)
+                                                @{ if (item.Status == 1)
+                                                    {
+                                                        @Html.Raw("Ativo");
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("Inativo");
+                                                    }
+                                                }
                                             </td>
 
                                         </tr>
