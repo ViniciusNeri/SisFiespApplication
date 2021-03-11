@@ -1,0 +1,87 @@
+﻿<div class="modal-header">
+    <h4 class="modal-title"></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="sub-title">Anexar Arquivo</h4>
+            <div class="row">
+                <table>
+
+                    <tr>
+                        <th>
+                            Nome do arquivo
+                        </th>
+                        <th>
+                            Tamanho
+                        </th>
+                        <th>
+                            Tipo
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var obj in ViewData["ObjFiles"] as IEnumerable<Anexo>)
+                    {
+                        <tr>
+                            <td>
+                                @obj.File
+                            </td>
+                            <td>
+                                @obj.Size
+                            </td>
+                            <td>
+                                @obj.Type
+                            </td>
+                            <td>
+                                @Html.ActionLink("Avaliacoes", "Download", new { fileName = obj.File , codigo = obj.CodigoAvaliacaoDetalhe })
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form method="post" enctype="multipart/form-data" action="file" onsubmit="AJAXSubmit(this);return false;">
+                        <input type="hidden" id="avaliacaoDetalheCodigo" value="0">
+                        <div class="form-group">
+                            <label>File upload</label>
+
+                            <input type="file" name="file" />
+                        </div>
+
+                        <div class="col-12">
+                            Size: <span class="size-file"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Upload" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success"
+                             role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                             style="">
+                            <span class="percent-progress"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default waves-effect " id="fecharModalFile" data-dismiss="modal">Fechar</button>
+    @*<button type="button" class="btn btn-primary waves-effect waves-light " data-dismiss="modal" onclick="salvarAvaliacaoDetalhe()">Salvar</button>*@
+</div>

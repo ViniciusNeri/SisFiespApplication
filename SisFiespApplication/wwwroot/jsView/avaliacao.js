@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
 	if ($("#observacaoAluno").val() != "" && $("#observacaoAluno").val() != undefined) {
-		$("#observacaoAluno").val(unescape($("#observacaoAluno").val()));		
+		$("#observacaoAluno").val(unescape($("#observacaoAluno").val()));
 	}
-	
+
 });
 
 function deletarAluno(idAluno) {
@@ -99,7 +99,7 @@ function salvarAvaliacao() {
 			$("#alunoCodigo").attr("disabled", "disabled");
 			$("#usuarioCodigo").attr("disabled", "disabled");
 
-			
+
 
 		},
 		error: function (data) {
@@ -118,16 +118,16 @@ function salvarAvaliacaoDetalhe() {
 
 	if ($('#dadosProcedimento').val() != "") {
 		dados += '{name:"Procedimento", value:"' + escape($('#dadosProcedimento').val()) + '"},';
-	} 
+	}
 	if ($('#dadosEnvolvidos').val() != "") {
 		dados += '{name:"Envolvidos", value:"' + ($('#dadosEnvolvidos').val()) + '"},';
-	} 
+	}
 	if ($('#dadosDescAcao').val() != "") {
 		dados += '{name:"DescAcao", value:"' + escape($('#dadosDescAcao').val()) + '"},';
-	} 
+	}
 	if ($('#dadosConduta').val() != "") {
 		dados += '{name:"Conduta", value:"' + escape($('#dadosConduta').val()) + '"},';
-	} 
+	}
 	if ($('#codigoAvaliacao').val() != "") {
 		dados += '{name:"AvaliacaoCodigo", value:"' + $('#codigoAvaliacao').val() + '"},';
 	}
@@ -235,10 +235,10 @@ function salvarAlunoEdit() {
 		dados += '{name:"Observacao", value:"' + escape($('#observacaoAluno').val()) + '"},';
 	}
 	if ($('#idAluno').val() != "") {
-		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},'; 
+		dados += '{name:"Codigo", value:"' + $('#idAluno').val() + '"},';
 	}
 	dadosEnvio = eval("[" + dados + "]");
-	
+
 	$.ajax({
 		url: "/Alunos/Edit",
 		method: "POST",
@@ -358,7 +358,7 @@ function buscarDadosDetalhe(AvaliacaoDetalheCodigo) {
 	$.ajax({
 		url: "/Avaliacoes/PartialDetalheAvaliacao",
 		method: "GET",
-		data: dadosEnvio,		
+		data: dadosEnvio,
 		success: function (data) {
 			$("#modaldetalheAvaliacao").html(data);
 		},
@@ -381,4 +381,115 @@ function limparCampos() {
 	$('#dadosDescAcao').val("")
 	$('#dadosConduta').val("")
 	$('#avaliacaoDetalheCodigo').val("")
+}
+
+function bytesToSize(bytes) {
+	var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+	if (bytes == 0) return '0 Byte';
+	var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+	return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+}
+
+$(document).ready(function () {
+	$('input[name="file"]').change(function () {
+		var file = $('input[name="file"]')[0].files[0];
+		$('.size-file').html(bytesToSize(file.size));
+	});
+});
+
+async function AJAXSubmit(form) {
+
+	var formData = new FormData($(form)[0]);
+	var computedProgress = function (evt) {
+		if (evt.lengthComputable) {
+			var percentComplete = evt.loaded / evt.total;
+			var percentComplete = Math.round(event.loaded * 100 / event.total) + "%";
+			$('.percent-progress').html(percentComplete);
+			$('.progress-bar').css("width", percentComplete);
+		}
+	};
+	$.ajax({
+		url: "/Avaliacoes/File",
+		type: 'POST',
+		xhr: function () {
+			var xhr = new window.XMLHttpRequest();
+
+			xhr.addEventListener("progress", computedProgress, false);
+			xhr.upload.addEventListener("progress", computedProgress, false);
+			return xhr;
+		},
+		data: formData,
+		async: true,
+		success: function (data) {
+			//$("#fecharModalFile").click();
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
+	return false;
+}
+
+function partialAnexos(valor) {
+
+	var dados = "";
+
+	if (valor != "") {
+		dados += '{name:"id", value:"' + valor + '"},';
+	}
+	dadosEnvio = eval("[" + dados + "]");
+
+	$.ajax({
+		url: "/Avaliacoes/PartialAnexos",
+		method: "GET",
+		data: dadosEnvio,
+		success: function (data) {
+			$("#modaldetalheAvaliacaoAnnexo").html(data);
+		},
+		error: function (data) {
+
+		}
+	});
+}
+
+function downloadArquivo(caminho, detalheCodigo, nomeArquivo) {
+
+
+	var dados = "";
+
+	if (nomeArquivo == "") {
+		swal({
+			title: "Erro ao cadastrar!",
+			text: "Erro desconhecido!",
+			icon: "error",
+		});
+	}
+
+	if (nomeArquivo != "") {
+		dados += '{name:"filename", value:"' + nomeArquivo + '"},';
+	}
+
+	if (detalheCodigo != "") {
+		dados += '{name:"codigo", value:"' + detalheCodigo + '"},';
+	}
+	dadosEnvio = eval("[" + dados + "]");
+
+
+	$.ajax({
+		url: "/Avaliacoes/Download",
+		method: "GET",
+		data: dadosEnvio,
+		success: function (data) {
+
+
+		},
+		error: function (data) {
+			swal({
+				title: "Erro ao cadastrar!",
+				text: "Erro desconhecido!",
+				icon: "error",
+			});
+		}
+	});
+
 }

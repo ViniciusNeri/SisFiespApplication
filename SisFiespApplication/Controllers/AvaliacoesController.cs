@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -308,6 +309,7 @@ namespace SisFiespApplication.Controllers
 														   DtCadastro = avd.DtCadastro,
 														   Procedimento = avd.Procedimento.Substring(0, 20),
 														   TpAvaliacaoDetalhe = avd.TpAvaliacaoDetalhe,
+														   NomeArquivo = avd.NomeArquivo
 
 													   }).OrderByDescending(x => x.Codigo).ToListAsync();
 
@@ -317,31 +319,89 @@ namespace SisFiespApplication.Controllers
 
 		public async Task<IActionResult> PartialDetalheAvaliacao(int? id)
 		{
-			ViewData["ListaDetalhe"] = await (from avd in _context.AvaliacaoDetalhe.Where(x => x.Codigo == id)
-											  join av in _context.Avaliacao
-											  on avd.AvaliacaoCodigo
-											  equals av.Codigo
-											  join al in _context.Aluno
-											  on av.AlunoCodigo equals al.Codigo
-											  join us in _context.Usuario
-											  on av.UsuarioCodigo
-											  equals us.Codigo
-											  select new AvaliacaoDetalhe
-											  {
-												  Codigo = avd.Codigo,
-												  EspecialistaNome = us.Nome,
-												  DtCadastro = avd.DtCadastro,
-												  Procedimento = avd.Procedimento.Substring(0, 20),
-												  TpAvaliacaoDetalhe = avd.TpAvaliacaoDetalhe,
-												  Conduta = avd.Conduta,
-												  Envolvidos = avd.Envolvidos,
-												  DescAcao = avd.DescAcao,
-												  NomeAluno = al.Nome
+			var avaliacaoDetalhe = await (from avd in _context.AvaliacaoDetalhe.Where(x => x.Codigo == id)
+										  join av in _context.Avaliacao
+										  on avd.AvaliacaoCodigo
+										  equals av.Codigo
+										  join al in _context.Aluno
+										  on av.AlunoCodigo equals al.Codigo
+										  join us in _context.Usuario
+										  on av.UsuarioCodigo
+										  equals us.Codigo
+										  select new AvaliacaoDetalhe
+										  {
+											  Codigo = avd.Codigo,
+											  EspecialistaNome = us.Nome,
+											  DtCadastro = avd.DtCadastro,
+											  Procedimento = avd.Procedimento.Substring(0, 20),
+											  TpAvaliacaoDetalhe = avd.TpAvaliacaoDetalhe,
+											  Conduta = avd.Conduta,
+											  Envolvidos = avd.Envolvidos,
+											  DescAcao = avd.DescAcao,
+											  NomeAluno = al.Nome
 
-											  }).OrderBy(x => x.Codigo).ToListAsync();
+										  }).OrderBy(x => x.Codigo).ToListAsync();
+			if (avaliacaoDetalhe.Count > 0)
+			{
+				HttpContext.Session.SetString("avaliacaoDetalheCodigo", avaliacaoDetalhe[0].Codigo.ToString());
+			}			
 
 			ViewData["codigoAvaliacao"] = id;
+			ViewData["ListaDetalhe"] = avaliacaoDetalhe;
 			return PartialView("_partialDetalhe");
+		}
+
+		public async Task<IActionResult> PartialAnexos(int? id)
+		{
+
+			List<Anexo> ObjFiles = new List<Anexo>();
+
+			if (id != 0)
+			{
+				HttpContext.Session.SetString("avaliacaoDetalheCodigo", id.ToString());
+
+				string filename = "wwwroot\\tmp\\" + id + "\\";
+				var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
+
+				foreach (string strfile in Directory.GetFiles(path))
+				{
+					FileInfo fi = new FileInfo(strfile);
+					Anexo obj = new Anexo();
+					obj.File = fi.Name;
+					obj.Size = fi.Length;
+					obj.CodigoAvaliacaoDetalhe = (int)id;
+					obj.Type = GetFileTypeByExtension(fi.Extension);
+					ObjFiles.Add(obj);
+				}
+
+
+				var avaliacaoDetalhe_ = await _context.AvaliacaoDetalhe.Where(x => x.Codigo > 1).ToListAsync();
+
+			}
+			
+			ViewData["ObjFiles"] = ObjFiles;
+
+			return PartialView("_partialAnexo");
+		}
+
+		private string GetFileTypeByExtension(string fileExtension)
+		{
+			switch (fileExtension.ToLower())
+			{
+				case ".docx":
+				case ".doc":
+					return "Microsoft Word Document";
+				case ".xlsx":
+				case ".xls":
+					return "Microsoft Excel Document";
+				case ".txt":
+					return "Text Document";
+				case ".jpg":
+				case ".png":
+					return "Image";
+				default:
+					return "Unknown";
+			}
 		}
 
 		// POST: Avaliacoes/Delete/5
@@ -358,6 +418,69 @@ namespace SisFiespApplication.Controllers
 		private bool AvaliacaoExists(int id)
 		{
 			return _context.Avaliacao.Any(e => e.Codigo == id);
+		}
+
+		[HttpPost]
+		[RequestFormLimits(MultipartBodyLengthLimit = 1209715200)]
+		[RequestSizeLimit(1209715200)]
+		public async Task<ActionResult> File(IFormFile file)
+		{
+			string avaliacaoDetalheCodigo = HttpContext.Session.GetString("avaliacaoDetalheCodigo");
+
+			var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
+
+			if (!destinationDirectory.Exists)
+				destinationDirectory.Create();
+
+			FileStream filestream = new FileStream(destinationDirectory + "/" + file.FileName, FileMode.Create, FileAccess.Write);
+
+			using (var memoryStream = new MemoryStream())
+			{
+				await file.CopyToAsync(memoryStream);
+
+				memoryStream.WriteTo(filestream);
+				memoryStream.Dispose();
+			}
+
+			AvaliacaoDetalhe avaliacaoDetalhe = await _context.AvaliacaoDetalhe.FindAsync(Convert.ToInt32(avaliacaoDetalheCodigo));
+			avaliacaoDetalhe.NomeArquivo = file.FileName;
+
+			_context.Update(avaliacaoDetalhe);
+			await _context.SaveChangesAsync();
+
+			return RedirectToAction(nameof(PartialAnexos), new { id = Convert.ToInt32(avaliacaoDetalheCodigo) });
+		}
+
+		[HttpPost]
+		public ActionResult SetValorDetalhe(int? Codigo)
+		{
+			HttpContext.Session.SetString("avaliacaoDetalheCodigo", Codigo.ToString());
+			return Ok();
+		}
+
+		public FileResult Download(string filename, int codigo)
+		{
+
+			string filename_ = filename;
+
+			filename = "wwwroot\\tmp\\" + codigo + "\\" + filename;
+
+			var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
+
+			byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+
+			return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename_);
+
+		}
+
+		private string GetContentType(string fileName)
+		{
+			string strcontentType = "application/octetstream";
+			string ext = System.IO.Path.GetExtension(fileName).ToLower();
+			Microsoft.Win32.RegistryKey registryKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
+			if (registryKey != null && registryKey.GetValue("Content Type") != null)
+				strcontentType = registryKey.GetValue("Content Type").ToString();
+			return strcontentType;
 		}
 	}
 }

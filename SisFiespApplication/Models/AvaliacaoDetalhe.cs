@@ -50,5 +50,9 @@ namespace SisFiespApplication.Models
 
 		[NotMapped]
 		public string NomeAluno { get; set; }
+
+		[Display(Name = "NomeArquivo")]
+		[Column("NomeArquivo")]
+		public string NomeArquivo { get; set; }
 	}
 }

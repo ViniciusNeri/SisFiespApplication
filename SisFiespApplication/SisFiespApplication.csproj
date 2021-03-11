@@ -39,6 +39,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\arquivos\" />
     <Folder Include="wwwroot\arquivos\" />
+    <Folder Include="wwwroot\tmp\" />
   </ItemGroup>
 
 </Project>
