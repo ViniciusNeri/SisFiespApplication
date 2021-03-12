@@ -94,8 +94,8 @@ function salvarAvaliacao() {
 			});
 			$("#detalheAvaliacao").html(data);
 			$("#detalheAvaliacao").attr("style", "display:block");
-			$("#btVoltar").attr("style", "display:block;position: absolute;top: 63px;right: 406px;");
-			$("#btSalvar").attr("style", "display:none;position: absolute;top: 63px;right: 406px;");
+			$("#btVoltar").attr("style", "display:block;");
+			$("#btSalvar").attr("style", "display:none;");
 			$("#alunoCodigo").attr("disabled", "disabled");
 			$("#usuarioCodigo").attr("disabled", "disabled");
 
@@ -113,6 +113,8 @@ function salvarAvaliacao() {
 }
 
 function salvarAvaliacaoDetalhe() {
+
+	$("#fecharModal").click();
 
 	var dados = "";
 
@@ -151,12 +153,20 @@ function salvarAvaliacaoDetalhe() {
 		method: "POST",
 		data: dadosEnvio,
 		success: function (data) {
+
 			swal({
 				title: "Sucesso!",
 				text: "Avaliação cadastrada com Sucesso",
 				icon: "success",
 			});
-			$("#detalheAvaliacao").html(data);
+
+			//$("#detalheAvaliacao").html(data);
+			window.setTimeout(function () {
+				document.location.reload(true);
+			}, 3000);
+			
+
+			
 
 		},
 		error: function (data) {

@@ -29,7 +29,7 @@ namespace SisFiespApplication.Controllers
 			}
 			else
 			{
-				return Json(new { status = "error", message = "A sessão expirou! Entre no sistema novamente." });
+				return RedirectToAction("Index", "Login");
 			}
 		}
 
@@ -61,7 +61,7 @@ namespace SisFiespApplication.Controllers
 			}
 			else
 			{
-				return Json(new { status = "error", message = "A sessão expirou! Entre no sistema novamente." });
+				return RedirectToAction("Index", "Login");
 			}
 		}
 
