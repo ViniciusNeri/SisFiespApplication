@@ -360,8 +360,16 @@ namespace SisFiespApplication.Controllers
 			{
 				HttpContext.Session.SetString("avaliacaoDetalheCodigo", id.ToString());
 
-				string filename = "wwwroot\\tmp\\" + id + "\\";
+				//string filename = "wwwroot\\tmp\\" + id + "\\";
+				string filename = "sisfiespapplication\\wwwroot\\tmp\\" + id + "\\";
 				var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
+
+				//AvaliacaoDetalhe avaliacaoDetalhe = await _context.AvaliacaoDetalhe.FindAsync(Convert.ToInt32(id));
+				//avaliacaoDetalhe.NomeArquivo = path.ToString();
+
+				//_context.Update(avaliacaoDetalhe);
+				//await _context.SaveChangesAsync();
+
 
 				foreach (string strfile in Directory.GetFiles(path))
 				{
@@ -427,7 +435,8 @@ namespace SisFiespApplication.Controllers
 		{
 			string avaliacaoDetalheCodigo = HttpContext.Session.GetString("avaliacaoDetalheCodigo");
 
-			var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
+			//var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
+			var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../sisfiesp/SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
 
 			if (!destinationDirectory.Exists)
 				destinationDirectory.Create();
@@ -437,9 +446,7 @@ namespace SisFiespApplication.Controllers
 			using (var memoryStream = new MemoryStream())
 			{
 				await file.CopyToAsync(memoryStream);
-
 				memoryStream.WriteTo(filestream);
-				memoryStream.Dispose();
 			}
 
 			AvaliacaoDetalhe avaliacaoDetalhe = await _context.AvaliacaoDetalhe.FindAsync(Convert.ToInt32(avaliacaoDetalheCodigo));
@@ -463,11 +470,13 @@ namespace SisFiespApplication.Controllers
 
 			string filename_ = filename;
 
-			filename = "wwwroot\\tmp\\" + codigo + "\\" + filename;
+			//filename = "wwwroot\\tmp\\" + codigo + "\\" + filename;
+			filename = "h:\\root\\home\\viniciusneri-001\\www\\sisfiesp\\SisFiespApplication\\wwwroot\\tmp\\" + codigo + "\\" + filename;
 
 			var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
 
-			byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+			//byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+			byte[] fileBytes = System.IO.File.ReadAllBytes(filename);
 
 			return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename_);
 

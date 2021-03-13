@@ -163,7 +163,7 @@ function salvarAvaliacaoDetalhe() {
 			//$("#detalheAvaliacao").html(data);
 			window.setTimeout(function () {
 				document.location.reload(true);
-			}, 3000);
+			}, 2000);
 			
 
 			

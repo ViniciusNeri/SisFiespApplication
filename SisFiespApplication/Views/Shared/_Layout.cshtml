@@ -48,9 +48,9 @@
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
 
     <link rel="stylesheet" type="text/css" href="~/assets/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" type="text/css" href="~/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/arquivos/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets/pages/data-table/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="~/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/arquivos/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
 
 
     <!-- Data Table Css -->
@@ -135,7 +135,7 @@
 <body>
     <!-- Pre-loader start -->
     <div class="theme-loader">
-        <div class="ball-scale">
+        @*<div class="ball-scale">
             <div class='contain'>
                 <div class="ring"><div class="frame"></div></div>
                 <div class="ring"><div class="frame"></div></div>
@@ -148,6 +148,11 @@
                 <div class="ring"><div class="frame"></div></div>
                 <div class="ring"><div class="frame"></div></div>
             </div>
+        </div>*@
+        <div class="loader-block">
+            <svg id="loader2" viewBox="0 0 100 100">
+                <circle id="circle-loader2" cx="50" cy="50" r="45"></circle>
+            </svg>
         </div>
     </div>
     <!-- Pre-loader end -->
