@@ -59,9 +59,21 @@
                                     <h1 class="sub-title">Cod:</h1>
                                     <input id="codigoAluno" disabled="disabled" class="form-control" />
                                 </div>
-                                <div class="col-sm-6 ">
+                                <div class="col-sm-4 ">
                                     <h1 class="sub-title">Nome:</h1>
                                     <input id="nomeAluno" class="form-control" />
+                                </div>
+
+                                <div class="col-sm-2 ">
+                                    <h1 class="sub-title">Data Nasc:</h1>
+                                    <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" />
+                                </div>
+                                <div class="col-sm-2 mobile-inputs ">
+                                    <h1 class="sub-title">Status:</h1>
+                                    <select id="statusAluno" class="form-control form-control-primary">
+                                        <option value="1">Ativo</option>
+                                        <option value="0">Inativo</option>
+                                    </select>
                                 </div>
                                 <div class="col-sm-2 mobile-inputs ">
                                     <h1 class="sub-title">Turno:</h1>
@@ -71,13 +83,6 @@
                                         <option value="3">Noite</option>
                                     </select>
                                 </div>
-                                @*<div class="col-sm-2 mobile-inputs ">
-                                    <h1 class="sub-title">Turno:</h1>
-                                    <select id="StatusAluno" class="form-control form-control-primary">
-                                        <option value="1">Ativo</option>
-                                        <option value="0">Inativo</option>
-                                    </select>
-                                </div>*@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 ">
@@ -93,17 +98,6 @@
                                     <h1 class="sub-title">Nome Pai:</h1>
                                     <input id="NomePai" class="form-control" type="text" />
                                 </div>
-                                <div class="col-sm-3 ">
-                                    <h1 class="sub-title">Data Nascimento:</h1>
-                                    <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    <h1 class="sub-title"></h1>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Escola:</h1>
                                     <select id="codigoEscola" class="form-control form-control-primary">
@@ -118,6 +112,29 @@
 
                                     </select>
                                 </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h1 class="sub-title">Apoio Escolar:</h1>
+                                    <select id="apoioEscolarAluno" class="form-control form-control-primary">
+                                        <option value="">  </option>
+                                        @if (ViewData["ApoioEscolar"] as IEnumerable<ApoioEscolar> != null)
+                                        {
+                                            foreach (var apoioEscolar in ViewData["ApoioEscolar"] as IEnumerable<ApoioEscolar>)
+                                            {
+                                                <option value="@apoioEscolar.Codigo">@apoioEscolar.Nome</option>
+                                            }
+                                        }
+
+                                    </select>
+                                </div>
+
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Modalidade/Fase:</h1>
                                     <select id="modalidadeAluno" class="form-control form-control-primary">
@@ -146,9 +163,16 @@
 
                                     </select>
                                 </div>
-                                <div class="col-sm-2">
-                                    <h1 class="sub-title">Mapeado:</h1>
+                                <div class="col-sm-1">
+                                    <h1 class="sub-title">Map:</h1>
                                     <input id="mapeadoAluno" class="form-control" type="checkbox" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <h1 class="sub-title">Sexo:</h1>
+                                    <select id="sexoAluno" class="form-control form-control-primary">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Feminio</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">

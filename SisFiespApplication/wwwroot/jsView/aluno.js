@@ -104,6 +104,16 @@ function salvarAluno() {
 	if ($('#diagnosticoAluno').val() != "") {
 		dados += '{name:"DiagnosticoCodigo", value:"' + $('#diagnosticoAluno').val() + '"},';
 	}
+	if ($('#apoioEscolarAluno').val() != "") {
+		dados += '{name:"ApoioEscolarCodigo", value:"' + $('#apoioEscolarAluno').val() + '"},';
+	}
+	if ($('#statusAluno').val() != "") {
+		dados += '{name:"Status", value:"' + $('#statusAluno').val() + '"},';
+	}
+	if ($('#sexoAluno').val() != "") {
+		dados += '{name:"Sexo", value:"' + $('#sexoAluno').val() + '"},';
+	}
+
 	if ($('#mapeadoAluno').is(":checked") == true) {
 		dados += '{name:"Mapeado", value:"1"},';
 	} else {
@@ -186,9 +196,6 @@ function salvarAlunoEdit() {
 	if ($('#TurnoAluno').val() != "") {
 		dados += '{name:"Turno", value:"' + $('#TurnoAluno').val() + '"},';
 	}
-	if ($('#StatusAluno').val() != "") {
-		dados += '{name:"Status", value:"' + $('#StatusAluno').val() + '"},';
-	}
 	if ($('#NomeMae').val() != "") {
 		dados += '{name:"NomeMae", value:"' + $('#NomeMae').val() + '"},';
 	}
@@ -200,6 +207,15 @@ function salvarAlunoEdit() {
 	}
 	if ($('#diagnosticoAluno').val() != "") {
 		dados += '{name:"DiagnosticoCodigo", value:"' + $('#diagnosticoAluno').val() + '"},';
+	}
+	if ($('#apoioEscolarAluno').val() != "") {
+		dados += '{name:"ApoioEscolarCodigo", value:"' + $('#apoioEscolarAluno').val() + '"},';
+	}
+	if ($('#statusAluno').val() != "") {
+		dados += '{name:"Status", value:"' + $('#statusAluno').val() + '"},';
+	}
+	if ($('#sexoAluno').val() != "") {
+		dados += '{name:"Sexo", value:"' + $('#sexoAluno').val() + '"},';
 	}
 	if ($('#mapeadoAluno').is(":checked") == true) {
 		dados += '{name:"Mapeado", value:"1"},';

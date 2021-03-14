@@ -32,7 +32,7 @@ namespace SisFiespApplication.Controllers
 				return View(await (from e in _context.Aluno
 								   join u in _context.Escola
 								   on e.EscolaCodigo
-								   equals u.Codigo							
+								   equals u.Codigo
 								   join m in _context.Modalidade
 								   on e.ModalidadeCodigo
 								   equals m.Codigo into m1
@@ -80,6 +80,7 @@ namespace SisFiespApplication.Controllers
 				ViewData["Escolas"] = _context.Escola.ToList();
 				ViewData["Modalidades"] = _context.Modalidade.ToList();
 				ViewData["Diagnosticos"] = _context.Diagnostico.ToList();
+				ViewData["ApoioEscolar"] = _context.ApoioEscolar.ToList();
 				return View();
 			}
 			else
@@ -113,6 +114,7 @@ namespace SisFiespApplication.Controllers
 				ViewData["Escolas"] = _context.Escola.ToList();
 				ViewData["Modalidades"] = _context.Modalidade.ToList();
 				ViewData["Diagnosticos"] = _context.Diagnostico.ToList();
+				ViewData["ApoioEscolar"] = _context.ApoioEscolar.ToList();
 
 				var aluno = await _context.Aluno.FindAsync(id);
 
@@ -140,27 +142,23 @@ namespace SisFiespApplication.Controllers
 
 		public async Task<IActionResult> Edit(Aluno aluno)
 		{
-			if (ModelState.IsValid)
+			try
 			{
-				try
-				{
-					_context.Update(aluno);
-					await _context.SaveChangesAsync();
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					if (!AlunoExists(aluno.Codigo))
-					{
-						return NotFound();
-					}
-					else
-					{
-						throw;
-					}
-				}
-				return RedirectToAction(nameof(Index));
+				_context.Update(aluno);
+				await _context.SaveChangesAsync();
 			}
-			return View(aluno);
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!AlunoExists(aluno.Codigo))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
+			return RedirectToAction(nameof(Index));
 		}
 
 		// GET: Alunos/Delete/5

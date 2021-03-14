@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Nova Avaliacao";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string acao = "";
+    <input type="hidden" value="@acao" id="AcaoDetalhe">
 }
+
 <div class="page-wrapper mr-auto ml-auto" id="pagina">
     <!-- Page-header start -->
     <div class="page-header card">
@@ -85,7 +89,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
 
                 </div>
@@ -122,94 +126,94 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content card-block">
                                             <div class="tab-pane active" id="home7" role="tabpanel">
-                                                
-                                                    <div class="user-detail-card">
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
-                                                                <div class="contact-icon">
-                                                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
-                                                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
-                                                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
-                                                                    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-8 user-detail">
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Nome :</h6>
-                                                                    </div>
-                                                                    <div id="nomeAluno" class="col-sm-7">
 
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Data Nascimento :</h6>
-                                                                    </div>
-                                                                    <div id="dtNascimentoAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-education"></i>Modalidade/Fase :</h6>
-                                                                    </div>
-                                                                    <div id="modalidadeAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-stethoscope"></i>Diagnótico :</h6>
-                                                                    </div>
-                                                                    <div id="diagnosticoAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-people"></i>Apoio Escolar :</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-7">
-                                                                        <h6 class="m-b-30">Alterar</h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-woman-in-glasses"></i>Nome Mãe :</h6>
-                                                                    </div>
-                                                                    <div id="nomeMaeAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-waiter"></i>Nome Pai :</h6>
-                                                                    </div>
-                                                                    <div id="nomePaiAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-weather"></i>Turno :</h6>
-                                                                    </div>
-                                                                    <div id="turnoAluno" class="col-sm-7">
-
-                                                                    </div>
-                                                                </div>
-
+                                                <div class="user-detail-card">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <img id="imagem1" src="~/assets/images/widget/menino.jpg " alt="" class="img-fluid p-b-10">
+                                                            <div class="contact-icon">
+                                                                <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
+                                                                <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
+                                                                <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Download"><i class="icofont icofont-download-alt m-0"></i></button>
+                                                                <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Share"><i class="icofont icofont-share m-0"></i></button>
                                                             </div>
                                                         </div>
+                                                        <div class="col-sm-8 user-detail">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-user"></i>Nome :</h6>
+                                                                </div>
+                                                                <div id="nomeAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Data Nascimento :</h6>
+                                                                </div>
+                                                                <div id="dtNascimentoAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-education"></i>Modalidade/Fase :</h6>
+                                                                </div>
+                                                                <div id="modalidadeAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-stethoscope"></i>Diagnótico :</h6>
+                                                                </div>
+                                                                <div id="diagnosticoAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-people"></i>Apoio Escolar :</h6>
+                                                                </div>
+                                                                <div id="apoioEscolarAluno"  class="col-sm-7">
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-woman-in-glasses"></i>Nome Mãe :</h6>
+                                                                </div>
+                                                                <div id="nomeMaeAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-waiter"></i>Nome Pai :</h6>
+                                                                </div>
+                                                                <div id="nomePaiAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-weather"></i>Turno :</h6>
+                                                                </div>
+                                                                <div id="turnoAluno" class="col-sm-7">
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
-                                               
+                                                </div>
+
                                             </div>
                                             <div class="tab-pane" id="profile7" role="tabpanel">
                                                 <div class="user-detail-card">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                            <img id="imagem2" src="~/assets/images/widget/menino.jpg " alt="" class="img-fluid p-b-10">
                                                             <div class="contact-icon">
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -293,13 +297,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="tab-pane" id="messages7" role="tabpanel">
                                                 <div class="user-detail-card">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                            <img id="imagem3" src="~/assets/images/widget/menino.jpg " alt="" class="img-fluid p-b-10">
                                                             <div class="contact-icon">
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -317,13 +321,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="tab-pane" id="settings7" role="tabpanel">
                                                 <div class="user-detail-card">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                            <img id="imagem4" src="~/assets/images/widget/menino.jpg " alt="" class="img-fluid p-b-10">
                                                             <div class="contact-icon">
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                 <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -388,7 +392,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>                                               
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

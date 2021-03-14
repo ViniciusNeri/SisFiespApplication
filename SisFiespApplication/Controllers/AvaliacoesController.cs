@@ -158,6 +158,8 @@ namespace SisFiespApplication.Controllers
 											from r in m1.DefaultIfEmpty()
 											join dr in _context.Usuario.Where(x => x.Funcao == 3) on es.UsuarioCodigo equals dr.Codigo into dr1
 											from dir in dr1.DefaultIfEmpty()
+											join ae in _context.ApoioEscolar on al.ApoioEscolarCodigo equals ae.Codigo into ae1
+											from aec in ae1.DefaultIfEmpty()
 											join usu in _context.Usuario.Where(x => x.Funcao == 1) on r.UsuarioCodigo equals usu.Codigo
 											where r.Codigo == id
 											select new Aluno
@@ -180,7 +182,8 @@ namespace SisFiespApplication.Controllers
 												DiretorEscolaAluno = dir.Nome,
 												CP1EscolaAluno = es.CP1,
 												CP2EscolaAluno = es.CP2,
-												EspecialistaAluno = usu.Nome
+												EspecialistaAluno = usu.Nome,
+												ApoioEsolarNome = aec.Nome
 											}).FirstOrDefaultAsync());
 
 
@@ -244,6 +247,8 @@ namespace SisFiespApplication.Controllers
 										 from r in m1.DefaultIfEmpty()
 										 join dr in _context.Usuario.Where(x => x.Funcao == 3) on es.UsuarioCodigo equals dr.Codigo into dr1
 										 from dir in dr1.DefaultIfEmpty()
+										 join ae in _context.ApoioEscolar on al.ApoioEscolarCodigo equals ae.Codigo into ae1
+										 from ea1 in ae1.DefaultIfEmpty()
 										 where al.Codigo == avaliacao.AlunoCodigo
 										 select new
 										 {
@@ -264,6 +269,8 @@ namespace SisFiespApplication.Controllers
 											 diretorEscola = dir.Nome,
 											 cp1Escola = es.CP1,
 											 cp2Escola = es.CP2,
+											 ApoioEscolar = ea1.Nome,
+											 sexo = al.Sexo
 
 										 }).FirstOrDefaultAsync());
 

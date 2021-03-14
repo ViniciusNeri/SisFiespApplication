@@ -60,9 +60,34 @@
                                     <h1 class="sub-title">Cod:</h1>
                                     <input id="codigoAluno" disabled="disabled" class="form-control" value="@Model.Codigo" />
                                 </div>
-                                <div class="col-sm-6 ">
+                                <div class="col-sm-4 ">
                                     <h1 class="sub-title">Nome:</h1>
                                     <input id="nomeAluno" class="form-control" value="@Model.Nome" />
+                                </div>
+                                <div class="col-sm-2 ">
+                                    <h1 class="sub-title">Data Nasc:</h1>
+                                    <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" value="@Model.DtNascimento" />
+                                </div>
+                                <div class="col-sm-2 mobile-inputs ">
+                                    <h1 class="sub-title">Turno:</h1>
+                                    <select id="statusAluno" class="form-control form-control-primary">
+                                        @if (Model.Status == 1)
+                                        {
+                                            <option selected="selected" value="1">Ativo</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="1">Ativo</option>
+                                        }
+                                        @if (Model.Status == 0)
+                                        {
+                                            <option selected="selected" value="0">Inativo</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="0">Inativo</option>
+                                        }
+                                    </select>
                                 </div>
                                 <div class="col-sm-2 mobile-inputs ">
                                     <h1 class="sub-title">Turno:</h1>
@@ -93,27 +118,6 @@
                                         }
                                     </select>
                                 </div>
-                                <div class="col-sm-2 mobile-inputs ">
-                                    <h1 class="sub-title">Turno:</h1>
-                                    <select id="StatusAluno" class="form-control form-control-primary">
-                                        @if (Model.Status == 1)
-                                        {
-                                            <option selected="selected" value="1">Ativo</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="1">Ativo</option>
-                                        }
-                                        @if (Model.Status == 0)
-                                        {
-                                            <option selected="selected" value="0">Inativo</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="0">Inativo</option>
-                                        }
-                                    </select>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 ">
@@ -129,17 +133,6 @@
                                     <h1 class="sub-title">Nome Pai:</h1>
                                     <input id="NomePai" class="form-control" type="text" value="@Model.NomePai" />
                                 </div>
-                                <div class="col-sm-3 ">
-                                    <h1 class="sub-title">Data Nascimento:</h1>
-                                    <input id="dtNascimento" class="form-control date" data-mask="99/99/9999" type="text" value="@Model.DtNascimento" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    <h1 class="sub-title"></h1>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-3">
                                     <h1 class="sub-title">Escola:</h1>
                                     <select id="codigoEscola" class="form-control form-control-primary">
@@ -155,6 +148,35 @@
                                                 else
                                                 {
                                                     <option value="@escola.Codigo">@escola.Nome</option>
+                                                }
+                                            }
+                                        }
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <h1 class="sub-title"></h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h1 class="sub-title">Apoio Escolar:</h1>
+                                    <select id="apoioEscolarAluno" class="form-control form-control-primary">
+                                        <option value="">  </option>
+                                        @if (ViewData["ApoioEscolar"] as IEnumerable<ApoioEscolar> != null)
+                                        {
+                                            foreach (var apoioEscolar in ViewData["ApoioEscolar"] as IEnumerable<ApoioEscolar>)
+                                            {
+                                                if (apoioEscolar.Codigo == Model.ApoioEscolarCodigo)
+                                                {
+                                                    <option selected="selected" value="@apoioEscolar.Codigo">@apoioEscolar.Nome</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@apoioEscolar.Codigo">@apoioEscolar.Nome</option>
                                                 }
                                             }
                                         }
@@ -203,8 +225,8 @@
 
                                     </select>
                                 </div>
-                                <div class="col-sm-2">
-                                    <h1 class="sub-title">Mapeado:</h1>
+                                <div class="col-sm-1">
+                                    <h1 class="sub-title">Map:</h1>
                                     @if (Model.Mapeado == 1)
                                     {
                                         <input id="mapeadoAluno" checked="checked" class="form-control" type="checkbox" />
@@ -213,6 +235,27 @@
                                     {
                                         <input id="mapeadoAluno" class="form-control" type="checkbox" />
                                     }
+                                </div>
+                                <div class="col-sm-2">
+                                    <h1 class="sub-title">Sexo:</h1>
+                                    <select id="sexoAluno" class="form-control form-control-primary">
+                                        @if (Model.Sexo == "M")
+                                        {
+                                            <option selected="selected" value="M">Masculino</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="M">Masculino</option>
+                                        }
+                                        @if (Model.Sexo == "F")
+                                        {
+                                            <option selected="selected" value="F">Feminino</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="F">Feminino</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">

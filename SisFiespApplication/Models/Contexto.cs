@@ -17,15 +17,11 @@ namespace SisFiespApplication.Models
         public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<SisFiespApplication.Models.Escola> Escola { get; set; }
-
         public DbSet<SisFiespApplication.Models.Aluno> Aluno { get; set; }
-
         public DbSet<SisFiespApplication.Models.Diagnostico> Diagnostico { get; set; }
-
         public DbSet<SisFiespApplication.Models.Modalidade> Modalidade { get; set; }
-
+        public DbSet<SisFiespApplication.Models.ApoioEscolar> ApoioEscolar { get; set; }
         public DbSet<SisFiespApplication.Models.Avaliacao> Avaliacao { get; set; }
-
         public DbSet<SisFiespApplication.Models.AvaliacaoDetalhe> AvaliacaoDetalhe { get; set; }
 
     }

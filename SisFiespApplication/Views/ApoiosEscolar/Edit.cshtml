@@ -1,12 +1,11 @@
-﻿@model SisFiespApplication.Models.Diagnostico
+﻿@model SisFiespApplication.Models.ApoioEscolar
 
 @{
-    ViewData["Title"] = "Editar Diagnótico";
+    ViewData["Title"] = "Editar Apoio Escolar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<input type="hidden" id="idDiagnostico" value="@Model.Codigo">
+<input type="hidden" id="idApoioEscolar" value="@Model.Codigo">
 
 <div class="page-wrapper" id="pagina">
     <!-- Page-header start -->
@@ -16,8 +15,8 @@
                 <div class="page-header-title">
                     <i class="icofont icofont-hat bg-c-pink"></i>
                     <div class="d-inline">
-                        <h4>Diagnóticos</h4>
-                        <span>Editar Diagnótico</span>
+                        <h4>Apoio Escolar</h4>
+                        <span>Editar Apoio Escolar</span>
                     </div>
                 </div>
             </div>
@@ -30,10 +29,10 @@
                             </a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#!">Diagnóticos</a>
+                            <a href="#!">Apoio Escolar</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#!">Editar Diagnótico</a>
+                            <a href="#!">Editar Apoio Escolar</a>
                         </li>
                     </ul>
                 </div>
@@ -59,17 +58,17 @@
                             <div class="row">
                                 <div class="col-sm-2 mobile-inputs">
                                     <h1 class="sub-title">Código:</h1>
-                                    <input id="codigoDiagnostico" class="form-control" value="@Model.Codigo" disabled="disabled" />
+                                    <input id="codigoApoioEscolar" class="form-control" value="@Model.Codigo" disabled="disabled" />
                                 </div>
                                 <div class="col-sm-6 ">
                                     <h1 class="sub-title">Nome:</h1>
-                                    <input id="nomeDiagnostico" class="form-control" value="@Model.Nome" />
+                                    <input id="nomeApoioEscolar" class="form-control" value="@Model.Nome" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <input style="float:right;margin-right:10px" type="button" id="btCancelarDiagnostico" value="Cancelar" onclick="location.href='@Url.Action("Index", "Diagnosticos")'" class="btn btn-danger" />
-                                <input style="float:right;margin-right:10px" type="button" onclick="salvarDiagnostico('editar')" value="Salvar" class="btn btn-primary" />
+                                <input style="float:right;margin-right:10px" type="button" id="btCancelarApoioEscolar" value="Cancelar" onclick="location.href='@Url.Action("Index", "ApoiosEscolar")'" class="btn btn-danger" />
+                                <input style="float:right;margin-right:10px" type="button" onclick="salvarApoioEscolar('editar')" value="Salvar" class="btn btn-primary" />
                             </div>
                         </form>
                     </div>
@@ -79,8 +78,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-

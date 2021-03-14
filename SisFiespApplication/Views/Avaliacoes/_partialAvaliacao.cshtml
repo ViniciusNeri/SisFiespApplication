@@ -54,38 +54,40 @@
 
 
 
-                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-
-                                <div id="modaldetalheAvaliacao"></div>
-                                <script>
-                        $.get('@Url.Action("PartialDetalheAvaliacao", "Avaliacoes")', { id: 0 }, function (content) {
-                            $("#modaldetalheAvaliacao").html(content);
-                        });
-                                </script>
-                            </div>
-
-                            <!-- cd-timeline-block -->
-                            <!-- cd-timeline -->
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="large-Modal2" tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div id="modaldetalheAvaliacaoAnnexo"></div>
-                                <script>
-                                    $.get('@Url.Action("PartialAnexos", "Avaliacoes")', { id: 0 }, function (content) {
-                                        $("#modaldetalheAvaliacaoAnnexo").html(content);
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div id="modaldetalheAvaliacao"></div>
+            <script>
+                        $.get('@Url.Action("PartialDetalheAvaliacao", "Avaliacoes")', { id: 0 }, function (content) {
+                            $("#modaldetalheAvaliacao").html(content);
+                        });
+            </script>
+        </div>
+
+        <!-- cd-timeline-block -->
+        <!-- cd-timeline -->
+    </div>
+</div>
+
+<div class="modal fade" id="large-Modal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="modaldetalheAvaliacaoAnnexo"></div>
+            <script>
+                                    $.get('@Url.Action("PartialAnexos", "Avaliacoes")', { id: 0 }, function (content) {
+                                        $("#modaldetalheAvaliacaoAnnexo").html(content);
+                                    });
+            </script>
         </div>
     </div>
 </div>
