@@ -1,0 +1,153 @@
+﻿@model IEnumerable<SisFiespApplication.Models.Agenda>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="page-wrapper" id="pagina">
+        <!-- Page-header start -->
+        <div class="page-header card">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="icofont icofont-calendar bg-c-pink"></i>
+                        <div class="d-inline">
+                            <h4>Agenda</h4>
+                            <span>Lista Agenda</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <i class="icofont icofont-calendar"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Agenda</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">Lista Agenda</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-body">
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-3 m-b-30">
+                                    <h4 class="sub-title">Aluno</h4>
+                                    <select name="alunoCodigo" id="alunoCodigo" class="form-control form-control-primary" >
+                                        <option value="">  </option>
+                                        @*@if (ViewData["Alunos"] as IEnumerable<Aluno> != null)
+                                        {
+                                            foreach (var Aluno in ViewData["Alunos"] as IEnumerable<Aluno>)
+                                            {
+                                                <option value="@Aluno.Codigo">@Aluno.Nome</option>
+                                            }
+                                        }*@
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-xl-3 m-b-30">
+                                    <h4 class="sub-title">Data</h4>
+                                    <select name="usuarioCodigo" id="usuarioCodigo" class="form-control form-control-primary">
+                                        <option value="">  </option>
+                                        @*@if (ViewData["Usuarios"] as IEnumerable<Usuario> != null)
+                                        {
+                                            foreach (var Usuario in ViewData["Usuarios"] as IEnumerable<Usuario>)
+                                            {
+                                                if (Usuario.Nome.Equals(@ViewData["Usuario"]))
+                                                {
+                                                    <option selected="selected" value="@Usuario.Codigo">@Usuario.Nome</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@Usuario.Codigo">@Usuario.Nome</option>
+                                                }
+
+                                            }
+                                        }*@
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-xl-3 m-b-30">
+                                    <input id="btSalvar" type="button" onclick="salvarAvaliacao()" value="Salvar" class="m-t-40 btn btn-primary" />
+                                    <input id="btVoltar" style="display:none;" type="button" onclick="location.href='@Url.Action("Index", "Avaliacoes")'" value="Voltar" class="m-t-40 btn btn-danger" />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Calendário</h5>
+                            <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                @*<div class="col-xl-2 col-md-12">
+                                    <div id="external-events">
+                                        <h6 class="m-b-30 m-t-20">Events</h6>
+                                        <div class="fc-event ui-draggable ui-draggable-handle">My Event 1</div>
+                                        <div class="fc-event ui-draggable ui-draggable-handle">My Event 2</div>
+                                        <div class="fc-event ui-draggable ui-draggable-handle">My Event 3</div>
+                                        <div class="fc-event ui-draggable ui-draggable-handle">My Event 4</div>
+                                        <div class="fc-event ui-draggable ui-draggable-handle">My Event 5</div>
+                                        <div class="checkbox-fade fade-in-primary m-t-10">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <span class="cr">
+                                                    <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
+                                                </span>
+                                                <span>Remove After Drop</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="col-xl-12 col-md-12">
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @*<div class="page-error">
+            <div class="card text-center">
+                <div class="card-block">
+                    <div class="m-t-10">
+                        <i class="icofont icofont-warning text-white bg-c-yellow"></i>
+                        <h4 class="f-w-600 m-t-25">Not supported</h4>
+                        <p class="text-muted m-b-0">Full Calender not supported in this device</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+            <!--classic JS-->
+            <script type="text/javascript" src="~/assets/js/classie.js"></script>
+            <!-- calender js -->
+            <script type="text/javascript" src="~/arquivos/moment/js/moment.min.js"></script>
+            <script type="text/javascript" src="~/arquivos/fullcalendar/js/fullcalendar.min.js"></script>
+            <script type="text/javascript" src="~/assets/pages/full-calender/calendar.js"></script>

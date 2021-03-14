@@ -23,6 +23,7 @@ namespace SisFiespApplication.Models
         public DbSet<SisFiespApplication.Models.ApoioEscolar> ApoioEscolar { get; set; }
         public DbSet<SisFiespApplication.Models.Avaliacao> Avaliacao { get; set; }
         public DbSet<SisFiespApplication.Models.AvaliacaoDetalhe> AvaliacaoDetalhe { get; set; }
+        public DbSet<SisFiespApplication.Models.Agenda> Agenda { get; set; }
 
     }
 }
