@@ -60,7 +60,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr role="row" class="odd">
-                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Avaliacao" onclick="location.href='@Url.Action("Edit", "Avaliacoes",new { id = @item.Codigo})'"> <i class="icofont icofont-ui-edit"></i></button>                    <button onclick="deletarAvaliacao(@item.Codigo)" style="float:none" class="btn-danger btn-circle bt_acao" type="button" title="Excluir Avaliacao"><i class="icofont icofont-ui-close"></i></button></td>
+                                            <td><button style="float:none" class="btn-warning btn-circle bt_acao" type="button" title="Editar Avaliacao" onclick="location.href='@Url.Action("Edit", "Avaliacoes",new { id = @item.Codigo})'"> <i class="icofont icofont-ui-edit"></i></button>                    <button onclick="configurarAvaliacao(@item.Codigo)" style="float:none" class="btn-primary btn-circle bt_acao" type="button" title="Configurar Avaliacao"><i class="icofont icofont-ui-settings"></i></button></td>
                                             <td class="sorting_1">
                                                 @Html.DisplayFor(modelItem => item.Codigo)
                                             </td>
