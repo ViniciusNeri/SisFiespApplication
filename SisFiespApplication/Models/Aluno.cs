@@ -25,11 +25,11 @@ namespace SisFiespApplication.Models
 
 		[Display(Name = "Data Nascimento")]
 		[Column("DtNascimento")]
-		public string DtNascimento { get; set; }
+		public DateTime DtNascimento { get; set; }
 
 		[Display(Name = "Data Cadastro")]
 		[Column("DtCadastro")]
-		public string DtCadastro { get; set; }
+		public DateTime DtCadastro { get; set; }
 
 		[Display(Name = "Mapeado")]
 		[Column("Mapeado")]

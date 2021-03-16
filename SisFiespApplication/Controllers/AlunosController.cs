@@ -98,6 +98,7 @@ namespace SisFiespApplication.Controllers
 			if (ModelState.IsValid)
 			{
 				aluno.Status = 1;
+				aluno.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d"));
 				_context.Add(aluno);
 				await _context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));

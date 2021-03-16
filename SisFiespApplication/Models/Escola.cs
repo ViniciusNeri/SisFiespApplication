@@ -69,7 +69,7 @@ namespace SisFiespApplication.Models
 
 		[Display(Name = "Data Cadastro")]
 		[Column("DtCadastro")]
-		public string DtCadastro { get; set; }
+		public DateTime DtCadastro { get; set; }
 				
 		public Usuario Usuario { get; set; }
 		

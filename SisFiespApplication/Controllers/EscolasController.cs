@@ -100,7 +100,7 @@ namespace SisFiespApplication.Controllers
 			if (ModelState.IsValid)
 			{
 				escola.Status = 1;
-				escola.DtCadastro = DateTime.Today.ToString("d");
+				escola.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d"));
 				_context.Add(escola);
 				await _context.SaveChangesAsync();
 				return RedirectToAction(nameof(Index));
@@ -169,7 +169,7 @@ namespace SisFiespApplication.Controllers
 				try
 				{
 					escola.Status = 1;
-					escola.DtCadastro = DateTime.Today.ToString("d");
+					escola.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d"));
 					_context.Update(escola);
 					await _context.SaveChangesAsync();
 				}

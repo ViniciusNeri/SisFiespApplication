@@ -98,7 +98,7 @@ namespace SisFiespApplication.Controllers
 				if (HttpContext.Session.GetString("userName") != null)
 				{
 					ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-					avaliacao.DtCadastro = DateTime.Today.ToString("d");
+					avaliacao.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d")); 
 					avaliacao.Status = 1;
 					_context.Add(avaliacao);
 					await _context.SaveChangesAsync();
@@ -120,7 +120,7 @@ namespace SisFiespApplication.Controllers
 			if (HttpContext.Session.GetString("userName") != null)
 			{
 				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-				avaliacaoDetalhe.DtCadastro = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+				avaliacaoDetalhe.DtCadastro = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
 				avaliacaoDetalhe.TpAvaliacaoDetalhe = 1;
 				if (avaliacaoDetalhe.Codigo == 0)
 				{
@@ -367,8 +367,8 @@ namespace SisFiespApplication.Controllers
 			{
 				HttpContext.Session.SetString("avaliacaoDetalheCodigo", id.ToString());
 
-				//string filename = "wwwroot\\tmp\\" + id + "\\";
-				string filename = "sisfiespapplication\\wwwroot\\tmp\\" + id + "\\";
+				string filename = "wwwroot\\tmp\\" + id + "\\";
+				//string filename = "sisfiespapplication\\wwwroot\\tmp\\" + id + "\\";
 				var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
 
 				//AvaliacaoDetalhe avaliacaoDetalhe = await _context.AvaliacaoDetalhe.FindAsync(Convert.ToInt32(id));
@@ -442,8 +442,8 @@ namespace SisFiespApplication.Controllers
 		{
 			string avaliacaoDetalheCodigo = HttpContext.Session.GetString("avaliacaoDetalheCodigo");
 
-			//var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
-			var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../sisfiesp/SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
+			var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
+			//var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName("../sisfiesp/SisFiespApplication/wwwroot/tmp/" + avaliacaoDetalheCodigo + "/"));
 
 			if (!destinationDirectory.Exists)
 				destinationDirectory.Create();
@@ -477,8 +477,8 @@ namespace SisFiespApplication.Controllers
 
 			string filename_ = filename;
 
-			//filename = "wwwroot\\tmp\\" + codigo + "\\" + filename;
-			filename = "h:\\root\\home\\viniciusneri-001\\www\\sisfiesp\\SisFiespApplication\\wwwroot\\tmp\\" + codigo + "\\" + filename;
+			filename = "wwwroot\\tmp\\" + codigo + "\\" + filename;
+			//filename = "h:\\root\\home\\viniciusneri-001\\www\\sisfiesp\\SisFiespApplication\\wwwroot\\tmp\\" + codigo + "\\" + filename;
 
 			var path = Path.Combine(Directory.GetCurrentDirectory(), filename);
 

@@ -67,7 +67,7 @@ namespace SisFiespApplication.Controllers
             if (ModelState.IsValid)
             {
                 
-                usuario.DtCadastro = DateTime.Today.ToString("d");
+                usuario.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d"));
                 usuario.Status = 1;
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
@@ -104,7 +104,7 @@ namespace SisFiespApplication.Controllers
                 try
                 {
 
-                    usuario.DtCadastro = DateTime.Today.ToString("d");
+                    usuario.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d"));
                     usuario.Status = 1;
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
