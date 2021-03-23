@@ -43,6 +43,7 @@ namespace SisFiespApplication.Controllers
 				{
 					HttpContext.Session.SetString("userName", usuario.Login);
 					HttpContext.Session.SetString("password", usuario.Senha);
+					HttpContext.Session.SetInt32("usuarioCodigo", usuario.Codigo);
 					HttpContext.Session.SetString("nome", usuario.Nome);
 
 					return RedirectToAction("Index", "Home");

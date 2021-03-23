@@ -122,6 +122,7 @@ namespace SisFiespApplication.Controllers
 				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
 				avaliacaoDetalhe.DtCadastro = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
 				avaliacaoDetalhe.TpAvaliacaoDetalhe = 1;
+				avaliacaoDetalhe.UsuarioAlteracaoCodigo = HttpContext.Session.GetInt32("usuarioCodigo");
 				if (avaliacaoDetalhe.Codigo == 0)
 				{
 					_context.Add(avaliacaoDetalhe);
@@ -183,7 +184,8 @@ namespace SisFiespApplication.Controllers
 												CP1EscolaAluno = es.CP1,
 												CP2EscolaAluno = es.CP2,
 												EspecialistaAluno = usu.Nome,
-												ApoioEsolarNome = aec.Nome
+												ApoioEsolarNome = aec.Nome,
+												Sexo = al.Sexo
 											}).FirstOrDefaultAsync());
 
 
@@ -253,7 +255,7 @@ namespace SisFiespApplication.Controllers
 										 select new
 										 {
 											 nomeAluno = al.Nome,
-											 dataNascimentoAluno = al.DtNascimento,
+											 dataNascimentoAluno = al.DtNascimento.ToString("d"),
 											 modalidadeAluno = mod.Nome,
 											 diagnoscoAluno = dia.Nome,
 											 nomeMae = al.NomeMae,
@@ -306,9 +308,7 @@ namespace SisFiespApplication.Controllers
 													   join av in _context.Avaliacao.Where(x => x.Codigo == id)
 													   on avd.AvaliacaoCodigo
 													   equals av.Codigo
-													   join us in _context.Usuario
-													   on av.UsuarioCodigo
-													   equals us.Codigo
+													   join us in _context.Usuario on avd.UsuarioAlteracaoCodigo equals us.Codigo
 													   select new AvaliacaoDetalhe
 													   {
 														   Codigo = avd.Codigo,

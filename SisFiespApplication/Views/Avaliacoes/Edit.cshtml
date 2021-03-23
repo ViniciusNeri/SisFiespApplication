@@ -6,6 +6,12 @@
 
 
     Aluno aluno = (Aluno)ViewData["Aluno"];
+    string imagem = "/assets/images/widget/menino.jpg";
+
+    if (aluno.Sexo == "F")
+    {
+        imagem = "/assets/images/widget/menina.jpg";
+    }
 
 }
 <div class="page-wrapper" id="pagina">
@@ -134,7 +140,7 @@
                                                     <div class="user-detail-card">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                                <img src="@imagem" alt="" class="img-fluid p-b-10">
                                                                 <div class="contact-icon">
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -154,7 +160,7 @@
                                                                         <h6 class="f-w-400 m-b-30"><i class="icofont icofont-ui-calendar"></i>Data Nascimento :</h6>
                                                                     </div>
                                                                     <div id="dtNascimentoAluno" class="col-sm-7">
-                                                                        @aluno.DtNascimento
+                                                                        @aluno.DtNascimento.ToString("d")
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -227,7 +233,7 @@
                                                     <div class="user-detail-card">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                                <img src="@imagem" alt="" class="img-fluid p-b-10">
                                                                 <div class="contact-icon">
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -316,7 +322,7 @@
                                                     <div class="user-detail-card">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                                <img src="@imagem" alt="" class="img-fluid p-b-10">
                                                                 <div class="contact-icon">
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>
@@ -339,7 +345,7 @@
                                                     <div class="user-detail-card">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <img src="~/assets/images/widget/Group-user.jpg " alt="" class="img-fluid p-b-10">
+                                                                <img src="@imagem" alt="" class="img-fluid p-b-10">
                                                                 <div class="contact-icon">
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="View"><i class="icofont icofont-eye m-0"></i></button>
                                                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="icofont icofont-printer m-0"></i></button>

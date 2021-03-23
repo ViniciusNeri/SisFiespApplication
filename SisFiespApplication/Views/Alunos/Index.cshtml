@@ -86,7 +86,7 @@
                                                 }
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.DtNascimento)
+                                                @Html.Raw(item.DtNascimento.ToString("d"))
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.ModalidadeNome)

@@ -21,6 +21,11 @@ namespace SisFiespApplication.Models
 		[Column("AvaliacaoCodigo")]
 		public int AvaliacaoCodigo { get; set; }
 
+		[ForeignKey("FK_usuario_avaliacaoDetalhe")]
+		[Display(Name = "Usuario")]
+		[Column("UsuarioAlteracaoCodigo")]
+		public int? UsuarioAlteracaoCodigo { get; set; }
+
 		[Display(Name = "TpAvaliacaoDetalhe")]
 		[Column("TpAvaliacaoDetalhe")]
 		public int TpAvaliacaoDetalhe { get; set; }

@@ -74,7 +74,7 @@
                                                 @Html.DisplayFor(modelItem => item.EscolaNome)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.DtCadastro)
+                                                @Html.Raw(item.DtCadastro.ToString("d"))
                                             </td>
                                             <td>
                                                 @{ if (item.Status == 1)
