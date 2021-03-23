@@ -98,7 +98,7 @@ namespace SisFiespApplication.Controllers
 				if (HttpContext.Session.GetString("userName") != null)
 				{
 					ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-					avaliacao.DtCadastro = Convert.ToDateTime(DateTime.Today.ToString("d")); 
+					avaliacao.DtCadastro = convertDataLocal(DateTime.Today); 
 					avaliacao.Status = 1;
 					_context.Add(avaliacao);
 					await _context.SaveChangesAsync();
@@ -119,8 +119,8 @@ namespace SisFiespApplication.Controllers
 		{
 			if (HttpContext.Session.GetString("userName") != null)
 			{
-				ViewData["Usuario"] = HttpContext.Session.GetString("nome");
-				avaliacaoDetalhe.DtCadastro = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+				ViewData["Usuario"] = HttpContext.Session.GetString("nome");				
+				avaliacaoDetalhe.DtCadastro = convertDataLocal(DateTime.Now);
 				avaliacaoDetalhe.TpAvaliacaoDetalhe = 1;
 				avaliacaoDetalhe.UsuarioAlteracaoCodigo = HttpContext.Session.GetInt32("usuarioCodigo");
 				if (avaliacaoDetalhe.Codigo == 0)
@@ -497,6 +497,12 @@ namespace SisFiespApplication.Controllers
 			if (registryKey != null && registryKey.GetValue("Content Type") != null)
 				strcontentType = registryKey.GetValue("Content Type").ToString();
 			return strcontentType;
+		}
+
+		private DateTime convertDataLocal(DateTime data_)
+		{
+			DateTime data = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(data_, TimeZoneInfo.Local.Id, "Bahia Standard Time");
+			return data;
 		}
 	}
 }

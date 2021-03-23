@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SisFiespApplication.Models
 {
+	[Table("Agenda")]
 	public class Agenda
 	{
 		[Key]

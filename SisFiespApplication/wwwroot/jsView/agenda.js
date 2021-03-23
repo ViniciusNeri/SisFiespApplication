@@ -21,8 +21,8 @@
 			icon: "error",
 		});
 		return;
-	}	
-	
+	}
+
 	dadosEnvio = eval("[" + dados + "]");
 
 
@@ -89,6 +89,7 @@ $(document).ready(function () {
 				var events = [];
 				var docd = doc;
 				something = docd;
+				//var initialLocaleCode = 'pt-br';
 
 				var obj = doc;
 
@@ -102,15 +103,19 @@ $(document).ready(function () {
 
 					}
 				}
+
 				$('#calendar').fullCalendar({
+					
 					header: {
 						left: 'prev,next today',
 						center: 'title',
 						right: 'month,agendaWeek,agendaDay,listMonth'
 					},
+					locale:'pt-br',
 					defaultDate: Date.now(),
+					//weekNumbers: true,
 					navLinks: true, // can click day/week names to navigate views
-					businessHours: true, // display business hours
+					businessHours: false, // display business hours
 					editable: true,
 					droppable: true, // this allows things to be dropped onto the calendar
 					drop: function () {
@@ -125,8 +130,33 @@ $(document).ready(function () {
 						alert('Deletar Agendamento!');
 					},
 					events: obj
+
 				})
-				console.log(events);
+
+				//var initialLocaleCode = 'pt-br';
+				//var localeSelectorEl = document.getElementById('locale-selector');
+				//var calendarEl = document.getElementById('calendar');
+
+				//var calendar = new FullCalendar.Calendar(calendarEl, {
+				//	headerToolbar: {
+				//		left: 'prev,next today',
+				//		center: 'title',
+				//		right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+				//	},
+				//	locale: initialLocaleCode,
+				//	buttonIcons: false, // show the prev/next text
+				//	weekNumbers: true,
+				//	navLinks: true, // can click day/week names to navigate views
+				//	editable: true,
+				//	dayMaxEvents: true, // allow "more" link when too many events
+				//	events: obj
+				//});
+
+				//calendar.render();
+
+
+
+				//console.log(events);
 
 			},
 			error: function (xhr, status, error) {
@@ -161,7 +191,7 @@ $(document).ready(function () {
 	//	events: //[
 
 
-			
+
 	//	//	{
 	//	//	title: 'Business Lunch',
 	//	//	start: '2021-03-14T13:00:00',

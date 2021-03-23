@@ -66,6 +66,7 @@ namespace SisFiespApplication.Controllers
 		public async Task<IActionResult> Create(Agenda agenda)
 		{
 			agenda.UsuarioCodigo = HttpContext.Session.GetInt32("usuarioCodigo");
+			//agenda.DtAgendamento = convertDataLocal(agenda.DtAgendamento);
 			_context.Add(agenda);
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
@@ -165,7 +166,7 @@ namespace SisFiespApplication.Controllers
 				var dados = await (from ag in _context.Agenda
 								   join al in _context.Aluno on ag.AlunoCodigo equals al.Codigo
 								   join usu in _context.Usuario on ag.UsuarioCodigo equals usu.Codigo
-								   select new
+								   select new AgendaResponse
 								   {
 									   id = ag.Codigo,
 									   start = ag.DtAgendamento,
@@ -174,10 +175,14 @@ namespace SisFiespApplication.Controllers
 									   title = al.Nome,
 									   textColor = "#fff",
 									   borderColor = usu.Codigo == HttpContext.Session.GetInt32("usuarioCodigo") ? "#4680ff" : "#93BE52",
-									   backgroundColor = usu.Codigo == HttpContext.Session.GetInt32("usuarioCodigo") ? "#4680ff" : "#93BE52"
+									   backgroundColor = usu.Codigo == HttpContext.Session.GetInt32("usuarioCodigo") ? "#4680ff" : "#93BE52",
+									   description = "Agendamento - " + al.Nome + " com - " + usu.Nome
 								   }).ToListAsync();
-				
 
+				//foreach (var item in dados)
+				//{
+				//	item.start = convertDataLocal(item.start);
+				//}
 				return Json(dados);
 			}
 			else
@@ -185,6 +190,12 @@ namespace SisFiespApplication.Controllers
 				return Json(null);
 			}
 		}
-			
+
+		private DateTime convertDataLocal(DateTime data_)
+		{
+			DateTime data = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(data_, TimeZoneInfo.Local.Id, "Bahia Standard Time");
+			return data;
+		}
+
 	}
 }
